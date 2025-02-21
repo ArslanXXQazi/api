@@ -69,6 +69,7 @@
 
 
 import 'dart:convert';
+import 'package:api/view/home_view/chat_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -122,7 +123,7 @@ class _ApiState extends State<Api> {
             margin: EdgeInsets.all(10),
             child: ListTile(
               onTap: (){
-                Navigator.push(context, CupertinoPageRoute(builder: (context)=>))
+                Navigator.push(context, CupertinoPageRoute(builder: (context)=>ChatScreen()));
               },
               title: Text(userList[index].name ?? 'No Name'),
               subtitle: Text("Year: ${userList[index].year}"),

@@ -36,11 +36,11 @@ class _ApiState extends State<Api> {
 
       }
 
-    void initState()
-    {
+    @override
+    void initState() {
+      // TODO: implement initState
       super.initState();
       fetchData();
-
     }
   }
 
@@ -57,6 +57,9 @@ class _ApiState extends State<Api> {
           return Column(children: [
             Text(userList[index].id.toString()),
             Text(userList[index].name.toString()),
+            Text(userList[index].year.toString()),
+            Text(userList[index].color.toString()),
+            Text(userList[index].pantone_value.toString()),
           ],);
         },
       ),

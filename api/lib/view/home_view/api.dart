@@ -122,7 +122,7 @@ class _ApiState extends State<Api> {
             margin: EdgeInsets.all(10),
             child: ListTile(
               onTap: (){
-                Navigator.push(context, CupertinoPageRoute(builder: (context)))
+                Navigator.push(context, CupertinoPageRoute(builder: (context)=>))
               },
               title: Text(userList[index].name ?? 'No Name'),
               subtitle: Text("Year: ${userList[index].year}"),

@@ -69,6 +69,7 @@
 
 
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:api/src/user_model/user_model.dart';
@@ -121,7 +122,7 @@ class _ApiState extends State<Api> {
             margin: EdgeInsets.all(10),
             child: ListTile(
               onTap: (){
-                Navigator.push(context, route)
+                Navigator.push(context, CupertinoPageRoute(builder: builder))
               },
               title: Text(userList[index].name ?? 'No Name'),
               subtitle: Text("Year: ${userList[index].year}"),

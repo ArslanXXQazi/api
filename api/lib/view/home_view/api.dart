@@ -118,7 +118,7 @@ class _ApiState extends State<Api> {
         itemCount: userList.length,
         itemBuilder: (context, index) {
           return Card(
-            margin: EdgeInsets.all(8),
+            margin: EdgeInsets.all(10),
             child: ListTile(
               title: Text(userList[index].name ?? 'No Name'),
               subtitle: Text("Year: ${userList[index].year}"),

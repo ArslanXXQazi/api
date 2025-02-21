@@ -42,15 +42,15 @@ class _ApiState extends State<Api> {
       fetchData();
 
     }
-
-
-
-
   }
 
 
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Api'),
+        centerTitle:true,
+      ),
       body: ListView.builder(
         itemCount: userList.length,
         itemBuilder: (context,index){

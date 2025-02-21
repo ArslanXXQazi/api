@@ -121,7 +121,7 @@ class _ApiState extends State<Api> {
             margin: EdgeInsets.all(10),
             child: ListTile(
               onTap: (){
-                Navigator.
+                Navigator.push(context, route)
               },
               title: Text(userList[index].name ?? 'No Name'),
               subtitle: Text("Year: ${userList[index].year}"),

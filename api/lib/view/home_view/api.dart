@@ -120,7 +120,9 @@ class _ApiState extends State<Api> {
           return Card(
             margin: EdgeInsets.all(10),
             child: ListTile(
-              onTap: (){},
+              onTap: (){
+                Navigator.
+              },
               title: Text(userList[index].name ?? 'No Name'),
               subtitle: Text("Year: ${userList[index].year}"),
               leading: CircleAvatar(

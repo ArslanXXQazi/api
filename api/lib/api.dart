@@ -56,6 +56,7 @@ class _ApiState extends State<Api> {
         itemBuilder: (context,index){
           return Column(children: [
             Text(userList[index].id.toString()),
+            Text(userList[index].name.toString()),
           ],);
         },
       ),

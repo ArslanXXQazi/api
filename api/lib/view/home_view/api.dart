@@ -124,6 +124,7 @@ class _ApiState extends State<Api> {
               subtitle: Text("Year: ${userList[index].year}"),
               leading: CircleAvatar(
                 backgroundColor: userList[index].color ?? Colors.grey,
+                child: Text(userList),
               ),
               trailing: Text(userList[index].pantone_value ?? ''),
             ),

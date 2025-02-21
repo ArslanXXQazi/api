@@ -55,7 +55,7 @@ class _ApiState extends State<Api> {
         itemCount: userList.length,
         itemBuilder: (context,index){
           return Column(children: [
-
+            Text(userList[index].id.toString()),
           ],);
         },
       ),

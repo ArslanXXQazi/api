@@ -50,6 +50,15 @@ class _ApiState extends State<Api> {
 
 
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: ListView.builder(
+        itemCount: userList.length,
+        itemBuilder: (context,index){
+          return Column(children: [
+
+          ],);
+        },
+      ),
+    );
   }
 }

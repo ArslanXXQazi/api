@@ -9,7 +9,9 @@ class ChatScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Chat Screen'),
       ),
-      body: Center(child: ,),
+      body: Center(child: Column(children: [
+
+      ],),),
     );
   }
 }

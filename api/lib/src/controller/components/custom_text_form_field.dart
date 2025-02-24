@@ -8,6 +8,7 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       decoration: InputDecoration(
         border: InputBorder.none,
+        hintText: '',
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: Colors.grey),

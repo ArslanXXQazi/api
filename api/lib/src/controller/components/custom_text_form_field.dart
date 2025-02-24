@@ -9,6 +9,7 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         border: InputBorder.none,
         enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
           
         )
       ),

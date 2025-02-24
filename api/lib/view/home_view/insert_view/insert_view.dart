@@ -14,7 +14,9 @@ class _InsertViewState extends State<InsertView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(
+        
+      ),
     );
   }
 }

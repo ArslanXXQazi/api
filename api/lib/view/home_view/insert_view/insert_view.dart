@@ -16,7 +16,7 @@ class _InsertViewState extends State<InsertView> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Post API",style: TextStyle(
-          
+          color: Colors.black,
         ),),
       ),
     );

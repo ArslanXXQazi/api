@@ -15,7 +15,9 @@ class _InsertViewState extends State<InsertView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Post API",),
+        title: Text("Post API",style: TextStyle(
+          
+        ),),
       ),
     );
   }

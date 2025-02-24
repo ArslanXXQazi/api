@@ -1,3 +1,4 @@
+import 'package:api/src/controller/components/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
@@ -28,7 +29,11 @@ class _InsertViewState extends State<InsertView> {
       ),
       body: Column(children: [
 
-        
+        CustomTextFormField(
+            controller: nameController,
+            hintText: "Enter Name",
+            labelText: "Enter Name",
+        )
 
       ],),
     );

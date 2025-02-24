@@ -17,6 +17,7 @@ class _InsertViewState extends State<InsertView> {
       appBar: AppBar(
         title: Text("Post API",style: TextStyle(
           color: Colors.black,
+          fontSize: 20,
         ),),
       ),
     );

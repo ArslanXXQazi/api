@@ -7,7 +7,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        
+        border: InputBorder.none,
       ),
     );
   }

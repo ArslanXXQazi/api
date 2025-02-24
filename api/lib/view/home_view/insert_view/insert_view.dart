@@ -39,7 +39,12 @@ class _InsertViewState extends State<InsertView> {
             controller: jobController,
             hintText: "Enter Job",
             labelText: "Enter Job",
-        )
+        ),
+        SizedBox(height: 10),
+        ElevatedButton(
+            onPressed: (){},
+            child: Text("ADD",style: TextStyle(fontSize: 20,color: Colors.white),))
+
 
       ],),
     );

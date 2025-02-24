@@ -12,6 +12,10 @@ class InsertView extends StatefulWidget {
 
 class _InsertViewState extends State<InsertView> {
   @override
+
+  TextEditingController nameController=TextEditingController();
+  TextEditingController jobController=TextEditingController();
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -23,7 +27,9 @@ class _InsertViewState extends State<InsertView> {
         ),),
       ),
       body: Column(children: [
+
         
+
       ],),
     );
   }

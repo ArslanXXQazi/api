@@ -18,6 +18,7 @@ class _InsertViewState extends State<InsertView> {
         title: Text("Post API",style: TextStyle(
           color: Colors.black,
           fontSize: 20,
+          fontWeight: FontWeight.bold,
         ),),
       ),
     );

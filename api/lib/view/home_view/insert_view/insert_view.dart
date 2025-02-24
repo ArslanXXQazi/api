@@ -15,6 +15,7 @@ class _InsertViewState extends State<InsertView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text("Post API",style: TextStyle(
           color: Colors.black,
           fontSize: 20,

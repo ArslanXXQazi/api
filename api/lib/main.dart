@@ -1,4 +1,5 @@
 import 'package:api/view/home_view/api.dart';
+import 'package:api/view/home_view/insert_view/insert_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Api()
+      home: InsertView(),
+      //Api(),
       //const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

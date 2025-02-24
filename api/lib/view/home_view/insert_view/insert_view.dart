@@ -36,7 +36,7 @@ class _InsertViewState extends State<InsertView> {
         ),
         SizedBox(height: 10),
         CustomTextFormField(
-            controller: nameController,
+            controller: jobController,
             hintText: "Enter Job",
             labelText: "Enter Job",
         )

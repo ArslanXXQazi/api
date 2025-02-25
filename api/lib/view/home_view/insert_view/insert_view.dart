@@ -33,7 +33,7 @@ class _InsertViewState extends State<InsertView> {
          setState(() {
            ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('User Created Successfully!'))
-           )
+           );
          });
         }
       else

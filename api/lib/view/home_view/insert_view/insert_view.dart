@@ -1,7 +1,6 @@
 import 'package:api/src/controller/components/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class InsertView extends StatefulWidget {

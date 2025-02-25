@@ -44,7 +44,8 @@ class _InsertViewState extends State<InsertView> {
     catch(e)
     {
       setState(() {
-    print(" Error $e");
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("$e")));
       });
     }
 

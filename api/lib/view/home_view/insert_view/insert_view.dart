@@ -31,7 +31,9 @@ class _InsertViewState extends State<InsertView> {
       if(response.statusCode==201)
         {
          setState(() {
-           ScaffoldMessenger.of(context).showSnackBar()
+           ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: content) 
+           )
          });
         }
       else

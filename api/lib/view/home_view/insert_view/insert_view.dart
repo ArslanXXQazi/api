@@ -17,6 +17,40 @@ class _InsertViewState extends State<InsertView> {
   TextEditingController nameController=TextEditingController();
   TextEditingController jobController=TextEditingController();
 
+  Future<void> createUser(String name, String job)
+  async{
+
+    final String apiUrl= "https://reqres.in/api/users";
+
+    try{
+      final response = await http.post(
+        Uri.parse(apiUrl)
+        body: jsonDecode({"name":name, "job":job})
+      );
+
+      if(response.statusCode==201)
+        {
+         setState(() {
+        print("Data Added");
+         });
+        }
+      else
+        {
+        print("errrorrrorororrooor");
+        }
+    }
+    catch(e)
+    {
+      setState(() {
+    print(" Error $e");
+      });
+    }
+
+
+  }
+
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -43,6 +77,9 @@ class _InsertViewState extends State<InsertView> {
         SizedBox(height: 10),
         ElevatedButton(
             onPressed: (){},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green,
+            ),
             child: Text("ADD",style: TextStyle(fontSize: 20,color: Colors.white),))
 
 

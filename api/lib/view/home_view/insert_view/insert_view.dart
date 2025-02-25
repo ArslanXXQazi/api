@@ -75,7 +75,7 @@ class _InsertViewState extends State<InsertView> {
           hintText: "Enter Job",
           labelText: "Enter Job",
         ),
-        SizedBox(height: 10),
+       
         ElevatedButton(
             onPressed: (){
               createUser(

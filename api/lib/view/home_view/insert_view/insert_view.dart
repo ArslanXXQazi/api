@@ -12,10 +12,9 @@ class InsertView extends StatefulWidget {
 }
 
 class _InsertViewState extends State<InsertView> {
-  @override
 
-  TextEditingController nameController=TextEditingController();
-  TextEditingController jobController=TextEditingController();
+  TextEditingController nameTextController=TextEditingController();
+  TextEditingController jobTextController=TextEditingController();
 
   Future<void> createUser(String name, String job)
   async{
@@ -67,13 +66,13 @@ class _InsertViewState extends State<InsertView> {
       body: Column(children: [
 
         CustomTextFormField(
-            controller: nameController,
+            controller: nameTextController,
             hintText: "Enter Name",
             labelText: "Enter Name",
         ),
         SizedBox(height: 10),
         CustomTextFormField(
-            controller: jobController,
+            controller: jobTextController,
             hintText: "Enter Job",
             labelText: "Enter Job",
         ),
@@ -81,8 +80,8 @@ class _InsertViewState extends State<InsertView> {
         ElevatedButton(
             onPressed: (){
               createUser(
-                  nameController.text,
-                  jobController.text,
+                  nameTextController.text,
+                  jobTextController.text,
               );
             },
             style: ElevatedButton.styleFrom(

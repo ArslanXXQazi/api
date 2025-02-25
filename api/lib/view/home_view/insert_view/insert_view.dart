@@ -62,7 +62,7 @@ class _InsertViewState extends State<InsertView> {
           fontWeight: FontWeight.bold,
         ),),
       ),
-      body: Column(children: [
+     
 
         CustomTextFormField(
           controller: nameTextController,

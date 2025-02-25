@@ -76,13 +76,16 @@ class _InsertViewState extends State<InsertView> {
         ),
         SizedBox(height: 10),
         ElevatedButton(
-            onPressed: (){},
+            onPressed: (){
+              createUser(
+                  nameController.text,
+                  jobController.text,
+              );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.green,
             ),
             child: Text("ADD",style: TextStyle(fontSize: 20,color: Colors.white),))
-
-
       ],),
     );
   }

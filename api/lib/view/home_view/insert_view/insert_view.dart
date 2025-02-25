@@ -32,7 +32,7 @@ class _InsertViewState extends State<InsertView> {
         {
          setState(() {
            ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: ) 
+            SnackBar(content: Text(data)) 
            )
          });
         }

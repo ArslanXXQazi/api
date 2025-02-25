@@ -79,7 +79,8 @@ class _InsertViewState extends State<InsertView> {
         ElevatedButton(
             onPressed: (){
               createUser(
-                
+                nameTextController.text,
+                jobTextController.text,
               );
             },
             style: ElevatedButton.styleFrom(

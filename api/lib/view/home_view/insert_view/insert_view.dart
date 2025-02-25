@@ -24,7 +24,7 @@ class _InsertViewState extends State<InsertView> {
 
     try{
       final response = await http.post(
-        Uri.parse(apiUrl)
+        Uri.parse(apiUrl),
         body: jsonEncode({"name":name, "job":job})
       );
 

@@ -86,7 +86,7 @@ class _InsertViewState extends State<InsertView> {
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.green,
             ),
-            child: Text("ADD",style: TextStyle(fontSize: 20,color: Colors.white),))
+           
       ],),
     );
   }

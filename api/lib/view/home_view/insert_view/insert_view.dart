@@ -38,7 +38,7 @@ class _InsertViewState extends State<InsertView> {
       else
         {
           ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('User Created Successfully!')));
+              SnackBar(content: Text('Failed to create user!')));
         }
     }
     catch(e)

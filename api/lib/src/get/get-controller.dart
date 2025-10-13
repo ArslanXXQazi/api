@@ -5,11 +5,20 @@ class GetController extends GetxController
 {
 
 
- var id=0;
- var firstName = "";
- var lastName = "";
- var gender = "";
- var age = "";
+ var id=0.obs;
+ var firstName = "".obs;
+ var lastName = "".obs;
+ var gender = "".obs;
+ var age = "".obs;
+
+ @override
+ void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    fetchData();
+  }
+
+
 
  void fetchData  () async
  {
@@ -17,11 +26,11 @@ class GetController extends GetxController
      Dio dio =Dio();
      final response = await dio.get('https://dummyjson.com/users/1');
      final data = response.data;
-     firstName=data['firstName'];
-     lastName=data['lastName'];
-     gender=data['female'];
-     age=data['age'];
-     id=data['id'];
+     firstName.value=data['firstName'];
+     lastName.value=data['lastName'];
+     gender.value=data['gender'];
+     age.value=data['age'].toString();
+     id.value=data['id'];
    }
    catch (e){
 

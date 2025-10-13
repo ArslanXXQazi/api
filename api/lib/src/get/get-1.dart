@@ -9,6 +9,8 @@ class GetApi1 extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
         title: Text(
           'Get Api',
           style: TextStyle(
@@ -18,7 +20,9 @@ class GetApi1 extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(child: Column(children: [
+      body: Center(child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
 
         Text(
           'Api',

@@ -71,6 +71,14 @@ class GetApi1 extends StatelessWidget {
                   fontWeight: FontWeight.w700
               ),
             ),
+            Text(
+              'email = ${getController.email.value}',
+              style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700
+              ),
+            ),
 
 
           ],);

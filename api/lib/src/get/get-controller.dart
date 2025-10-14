@@ -23,9 +23,9 @@ class GetController extends GetxController
 
  void fetchData  () async
  {
-
+   isLoading.value=true;
    try{
-     isLoading.value=true;
+
      Dio dio =Dio();
      final response = await dio.get('https://dummyjson.com/users/1');
      final data = response.data;

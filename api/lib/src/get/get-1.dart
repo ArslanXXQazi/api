@@ -32,7 +32,7 @@ class GetApi1 extends StatelessWidget {
           children: [
 
             Text(
-              'ID = ${getController.id.value}',
+              getController.isLoading.value ? "Loading...": 'ID = ${getController.id.value}',
               style: TextStyle(
                   color: Colors.red,
                   fontSize: 20,
@@ -40,7 +40,7 @@ class GetApi1 extends StatelessWidget {
               ),
             ),
             Text(
-              'First Name = ${getController.firstName.value}',
+              getController.isLoading.value ? "Loading..." : 'First Name = ${getController.firstName.value}',
               style: TextStyle(
                   color: Colors.red,
                   fontSize: 20,
@@ -48,7 +48,7 @@ class GetApi1 extends StatelessWidget {
               ),
             ),
             Text(
-              'Last Name = ${getController.lastName.value}',
+              getController.isLoading.value ? "loading...":'Last Name = ${getController.lastName.value}',
               style: TextStyle(
                   color: Colors.red,
                   fontSize: 20,
@@ -56,7 +56,7 @@ class GetApi1 extends StatelessWidget {
               ),
             ),
             Text(
-              'Gender = ${getController.gender.value}',
+              getController.isLoading.value?"loading..." :  'Gender = ${getController.gender.value}',
               style: TextStyle(
                   color: Colors.red,
                   fontSize: 20,
@@ -64,7 +64,7 @@ class GetApi1 extends StatelessWidget {
               ),
             ),
             Text(
-              'Age = ${getController.age.value}',
+             getController.isLoading.value ?"Loading":'Age = ${getController.age.value}',
               style: TextStyle(
                   color: Colors.red,
                   fontSize: 20,
@@ -72,7 +72,7 @@ class GetApi1 extends StatelessWidget {
               ),
             ),
             Text(
-              'email = ${getController.email.value}',
+              getController.isLoading.value ? "Loading..." :'email = ${getController.email.value}',
               style: TextStyle(
                   color: Colors.red,
                   fontSize: 20,

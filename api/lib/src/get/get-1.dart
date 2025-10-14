@@ -97,6 +97,33 @@ class GetApi1 extends StatelessWidget {
               ),
             ),
 
+             Text(
+              getController.isLoading.value ? "Loading..." :'state = ${getController.state.value}',
+              style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700
+              ),
+            ),
+
+               Text(
+              getController.isLoading.value ? "Loading..." :'Country = ${getController.country.value}',
+              style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700
+              ),
+            ),
+
+                 Text(
+              getController.isLoading.value ? "Loading..." :'Card Number = ${getController.cardNumber.value}',
+              style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700
+              ),
+            ),
+
           ],);
       }))
       ,

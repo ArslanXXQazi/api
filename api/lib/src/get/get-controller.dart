@@ -13,6 +13,14 @@ class GetController extends GetxController
  var email= "".obs;
  var hairColor= "".obs;
  var hariStyle = "".obs;
+ var address = "".obs;
+ var city = "".obs;
+ var state = "".obs;
+ var country = "".obs;
+ var university = "".obs;
+ var bank = "".obs;
+
+
 
 
  @override
@@ -45,7 +53,7 @@ class GetController extends GetxController
          email.value=data['email'];
          hairColor.value = data['hair']['color'];
          hariStyle.value = data['hair']['type'];
-         
+
          isLoading.value=false;
        }
      else

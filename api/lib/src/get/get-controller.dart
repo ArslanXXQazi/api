@@ -18,10 +18,7 @@ class GetController extends GetxController
  var state = "".obs;
  var country = "".obs;
  var university = "".obs;
- var bank = "".obs;
-
-
-
+ var cardNumber = "".obs;
 
  @override
  void onInit() {
@@ -29,8 +26,6 @@ class GetController extends GetxController
     super.onInit();
     fetchData();
   }
-
-
 
  void fetchData  () async
  {
@@ -54,6 +49,12 @@ class GetController extends GetxController
          hairColor.value = data['hair']['color'];
          hariStyle.value = data['hair']['type'];
          address.value = data['address']['address'];
+         city.value=data['address']['city'];
+         state.value= data['address']['state'];
+         country.value=data['country'];
+         university.value= data['university'];
+         cardNumber.value=data['bank']['cardNumber'];
+
 
          isLoading.value=false;
        }

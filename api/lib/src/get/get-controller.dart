@@ -11,6 +11,9 @@ class GetController extends GetxController
  var gender = "".obs;
  var age = 0.obs;
  var email= "".obs;
+ var hairColor= "".obs;
+ var hariStyle = "".obs;
+
 
  @override
  void onInit() {
@@ -24,18 +27,33 @@ class GetController extends GetxController
  void fetchData  () async
  {
    isLoading.value=true;
+   Dio dio =Dio();
+   String getUrlApi ="https://dummyjson.com/users/1";
    try{
 
-     Dio dio =Dio();
-     final response = await dio.get('https://dummyjson.com/users/1');
-     final data = response.data;
-     firstName.value=data['firstName'];
-     lastName.value=data['lastName'];
-     gender.value=data['gender'];
-     age.value=data['age'];
-     id.value=data['id'];
-     email.value=data['email'];
-     isLoading.value=false;
+     final response = await dio.get(getUrlApi);
+
+
+     if (response.statusCode == 200 || response.statusCode==201)
+       {
+         final data = response.data;
+         firstName.value=data['firstName'];
+         lastName.value=data['lastName'];
+         gender.value=data['gender'];
+         age.value=data['age'];
+         id.value=data['id'];
+         email.value=data['email'];
+         hairColor.value = data['hair']['color'];
+         hariStyle.value = data['hair']['type'];
+         
+         isLoading.value=false;
+       }
+     else
+       {
+         isLoading.value=false;
+         print("===============>>>ERROR<===============");
+       }
+
    }
    catch (e){
      isLoading.value=false;

@@ -80,6 +80,14 @@ class GetApi1 extends StatelessWidget {
               ),
             ),
 
+             Text(
+              getController.isLoading.value ? "Loading..." :'Hair Style = ${getController.hariStyle.value}',
+              style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700
+              ),
+            ),
 
           ],);
       }))

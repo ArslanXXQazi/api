@@ -107,6 +107,24 @@ class GetApi1 extends StatelessWidget {
             ),
 
                Text(
+              getController.isLoading.value ? "Loading..." :'City = ${getController.city.value}',
+              style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700
+              ),
+            ),
+
+               Text(
+              getController.isLoading.value ? "Loading..." :'University = ${getController.university.value}',
+              style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700
+              ),
+            ),
+
+             Text(
               getController.isLoading.value ? "Loading..." :'Country = ${getController.country.value}',
               style: TextStyle(
                   color: Colors.red,
@@ -115,7 +133,8 @@ class GetApi1 extends StatelessWidget {
               ),
             ),
 
-                 Text(
+
+             Text(
               getController.isLoading.value ? "Loading..." :'Card Number = ${getController.cardNumber.value}',
               style: TextStyle(
                   color: Colors.red,
@@ -123,6 +142,7 @@ class GetApi1 extends StatelessWidget {
                   fontWeight: FontWeight.w700
               ),
             ),
+
 
           ],);
       }))

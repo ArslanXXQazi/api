@@ -51,7 +51,7 @@ class GetController extends GetxController
          address.value = data['address']['address'];
          city.value=data['address']['city'];
          state.value= data['address']['state'];
-         country.value=data['country'];
+         country.value=data ['address']['country'];
          university.value= data['university'];
          cardNumber.value=data['bank']['cardNumber'];
 

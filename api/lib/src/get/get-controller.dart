@@ -23,8 +23,9 @@ class GetController extends GetxController
 
  void fetchData  () async
  {
-   isLoading.value=true;
+
    try{
+     isLoading.value=true;
      Dio dio =Dio();
      final response = await dio.get('https://dummyjson.com/users/1');
      final data = response.data;
@@ -34,6 +35,7 @@ class GetController extends GetxController
      age.value=data['age'];
      id.value=data['id'];
      email.value=data['email'];
+     isLoading.value=false;
    }
    catch (e){
      isLoading.value=false;

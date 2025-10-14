@@ -53,6 +53,7 @@ class GetController extends GetxController
          email.value=data['email'];
          hairColor.value = data['hair']['color'];
          hariStyle.value = data['hair']['type'];
+         address.value = data['address']['address'];
 
          isLoading.value=false;
        }

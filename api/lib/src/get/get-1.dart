@@ -79,9 +79,17 @@ class GetApi1 extends StatelessWidget {
                   fontWeight: FontWeight.w700
               ),
             ),
-
              Text(
               getController.isLoading.value ? "Loading..." :'Hair Style = ${getController.hariStyle.value}',
+              style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700
+              ),
+            ),
+
+            Text(
+              getController.isLoading.value ? "Loading..." :'Address = ${getController.address.value}',
               style: TextStyle(
                   color: Colors.red,
                   fontSize: 20,

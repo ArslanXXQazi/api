@@ -45,20 +45,20 @@ class GetController extends GetxController
       if (response.statusCode == 200 || response.statusCode==201)
       {
         final data = response.data;
-        firstName.value=data['firstName'];
-        lastName.value=data['lastName'];
-        gender.value=data['gender'];
-        age.value=data['age'];
-        id.value=data['id'];
-        email.value=data['email'];
-        hairColor.value = data['hair']['color'];
-        hariStyle.value = data['hair']['type'];
-        address.value = data['address']['address'];
-        city.value=data['address']['city'];
-        state.value= data['address']['state'];
-        country.value=data ['address']['country'];
-        university.value= data['university'];
-        cardNumber.value=data['bank']['cardNumber'];
+        firstName.value=data['firstName'] ??"N/A";
+        lastName.value=data['lastName']??"N/A";
+        gender.value=data['gender']??"N/A";
+        age.value=data['age']??"N/A";
+        id.value=data['id']??"N/A";
+        email.value=data['email']??"N/A";
+        hairColor.value = data['hair']['color']??"N/A";
+        hariStyle.value = data['hair']['type']??"N/A";
+        address.value = data['address']['address']??"N/A";
+        city.value=data['address']['city']??"N/A";
+        state.value= data['address']['state']??"N/A";
+        country.value=data ['address']['country']??"N/A";
+        university.value= data['university']??"N/A";
+        cardNumber.value=data['bank']['cardNumber']??"N/A";
         userImage.value = data['image'];
         isLoading.value=false;
       }

@@ -31,6 +31,11 @@ class GetApi1 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
+
+            CircleAvatar(
+              backgroundImage: NetworkImage("${getController.userImage}"),
+            ),
+
             Text(
               getController.isLoading.value ? "Loading...": 'ID = ${getController.id.value}',
               style: TextStyle(
@@ -96,7 +101,6 @@ class GetApi1 extends StatelessWidget {
                   fontWeight: FontWeight.w700
               ),
             ),
-
              Text(
               getController.isLoading.value ? "Loading..." :'state = ${getController.state.value}',
               style: TextStyle(
@@ -105,7 +109,6 @@ class GetApi1 extends StatelessWidget {
                   fontWeight: FontWeight.w700
               ),
             ),
-
                Text(
               getController.isLoading.value ? "Loading..." :'City = ${getController.city.value}',
               style: TextStyle(

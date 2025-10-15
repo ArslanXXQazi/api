@@ -5,6 +5,8 @@ class GetController extends GetxController
 {
 
  var isLoading = false.obs;
+ var error = ''.obs;
+ var userImage ="".obs;
  var id=0.obs;
  var firstName = "".obs;
  var lastName = "".obs;
@@ -54,6 +56,7 @@ class GetController extends GetxController
          country.value=data ['address']['country'];
          university.value= data['university'];
          cardNumber.value=data['bank']['cardNumber'];
+         userImage.value = data['image'];
 
 
          isLoading.value=false;

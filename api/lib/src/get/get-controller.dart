@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:api/src/controller/constants/apis.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
@@ -35,7 +36,7 @@ class GetController extends GetxController
  {
    isLoading.value=true;
    Dio dio =Dio();
-   String getUrlApi ="https://dummyjson.com/users/1";
+   String getUrlApi ="${AppApis.baseUrl}${AppApis.user1}";
    try{
 
      final response = await dio.get(getUrlApi);

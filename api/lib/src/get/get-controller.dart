@@ -1,0 +1,79 @@
+import 'dart:math';
+
+import 'package:api/src/controller/constants/apis.dart';
+import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+
+class GetController extends GetxController
+{
+
+  var isLoading = false.obs;
+  var error = ''.obs;
+  var userImage ="".obs;
+  var id=0.obs;
+  var firstName = "".obs;
+  var lastName = "".obs;
+  var gender = "".obs;
+  var age = 0.obs;
+  var email= "".obs;
+  var hairColor= "".obs;
+  var hariStyle = "".obs;
+  var address = "".obs;
+  var city = "".obs;
+  var state = "".obs;
+  var country = "".obs;
+  var university = "".obs;
+  var cardNumber = "".obs;
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    fetchData();
+  }
+
+  void fetchData  () async
+  {
+    isLoading.value=true;
+    Dio dio =Dio();
+    String getUrlApi ="${AppApis.baseUrl}${AppApis.user1}";
+    try{
+
+      final response = await dio.get(getUrlApi);
+
+
+      if (response.statusCode == 200 || response.statusCode==201)
+      {
+        final data = response.data;
+        firstName.value=data['firstName'];
+        lastName.value=data['lastName'];
+        gender.value=data['gender'];
+        age.value=data['age'];
+        id.value=data['id'];
+        email.value=data['email'];
+        hairColor.value = data['hair']['color'];
+        hariStyle.value = data['hair']['type'];
+        address.value = data['address']['address'];
+        city.value=data['address']['city'];
+        state.value= data['address']['state'];
+        country.value=data ['address']['country'];
+        university.value= data['university'];
+        cardNumber.value=data['bank']['cardNumber'];
+        userImage.value = data['image'];
+        isLoading.value=false;
+      }
+      else
+      {
+        isLoading.value=false;
+        print("===============>>>ERROR<===============");
+      }
+
+    }
+    catch (e){
+      isLoading.value=false;
+      print(e.toString());
+      error.value=e.toString();
+
+    }
+  }
+}

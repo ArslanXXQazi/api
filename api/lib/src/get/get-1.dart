@@ -1,3 +1,4 @@
+import 'package:api/src/controller/components/black-text.dart';
 import 'package:api/src/get/get-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,16 +27,14 @@ class GetApi1 extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(child: Obx((){
+      body: getController.error.value !=''? Blacktext(text: getController.error.value):
+      Center(child: Obx((){
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
-
             CircleAvatar(
               backgroundImage: NetworkImage("${getController.userImage}"),
             ),
-
             Text(
               getController.isLoading.value ? "Loading...": 'ID = ${getController.id.value}',
               style: TextStyle(

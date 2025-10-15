@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
@@ -57,8 +59,6 @@ class GetController extends GetxController
          university.value= data['university'];
          cardNumber.value=data['bank']['cardNumber'];
          userImage.value = data['image'];
-
-
          isLoading.value=false;
        }
      else
@@ -71,12 +71,8 @@ class GetController extends GetxController
    catch (e){
      isLoading.value=false;
      print(e.toString());
+     error.value=e.toString();
 
    }
-
-
  }
-
-
-
 }

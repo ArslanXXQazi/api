@@ -23,7 +23,7 @@ class GetApi1 extends StatelessWidget {
           style: TextStyle(
               color: Colors.green,
               fontSize: 30,
-              fontWeight: FontWeight.w700
+              fontWeight: FontWeight.w70
           ),
         ),
       ),

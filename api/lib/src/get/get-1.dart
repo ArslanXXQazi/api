@@ -6,7 +6,10 @@ import 'package:get/get_core/src/get_main.dart';
 
 
 class GetApi1 extends StatelessWidget {
-  const GetApi1({super.key});
+
+  final int id;
+
+  const GetApi1({super.key,required this.id});
 
   @override
   Widget build(BuildContext context) {

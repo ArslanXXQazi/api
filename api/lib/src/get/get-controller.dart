@@ -25,12 +25,7 @@ class GetController extends GetxController
   var university = "".obs;
   var cardNumber = "".obs;
 
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-    fetchData(2);
-  }
+
 
   void fetchData  ( int userId ) async
   {

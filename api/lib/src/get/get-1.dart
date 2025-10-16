@@ -15,6 +15,7 @@ class GetApi1 extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final GetController getController = Get.put(GetController());
+    getController.fetchData(id);
 
     return Scaffold(
       backgroundColor: Colors.white,

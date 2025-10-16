@@ -1,6 +1,5 @@
 import 'package:api/src/get/get-1.dart';
-import 'package:api/view/home_view/api.dart';
-import 'package:api/view/home_view/insert_view/insert_view.dart';
+import 'package:api/src/get/insert-id.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'APIS',
-      home: InsertView(),
+      home: InsertId(),
     );
   }
 }

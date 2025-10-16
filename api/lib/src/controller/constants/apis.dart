@@ -5,9 +5,15 @@ class AppApis {
   static final String baseUrl = "https://dummyjson.com/";
 
 
+  //all users
+  static final String getAllUser='users';
+
   //end points
 
-  static final String user1= "users/1";
+  static String getUserEndPoint (int userId)
+  {
+    return "users/$userId";
+  }
 
 
 }

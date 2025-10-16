@@ -15,7 +15,9 @@ class InsertId extends StatelessWidget {
 
       body: Padding(
         padding: const EdgeInsets.all(30),
-        child: Column(children: [
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
 
           TextFormField(controller: textEditingController,),
           SizedBox(height: 20),

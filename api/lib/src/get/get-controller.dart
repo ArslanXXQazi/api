@@ -31,8 +31,7 @@ class GetController extends GetxController
   {
     isLoading.value=true;
     Dio dio =Dio();
-   // String getUrlApi ="${AppApis.baseUrl}${AppApis.user1}";
-    String getUrlApi ="https://dummyjson.com/users/${userId}";
+    String getUrlApi ="${AppApis.baseUrl}${AppApis.getUserEndPoint(userId)}";
     try{
 
       final response = await dio.get(getUrlApi);

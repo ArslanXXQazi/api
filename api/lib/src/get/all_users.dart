@@ -1,4 +1,6 @@
 
+import 'package:api/src/controller/constants/apis.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class AllUsers extends StatefulWidget {
@@ -20,11 +22,26 @@ class _AllUsersState extends State<AllUsers> {
 
     try
     {
+      setState(() {
+        isLoading=true;
+      });
+
+      Dio dio =Dio();
+      String getUrl = "${AppApis.baseUrl}${AppApis.getAllUser}";
+      final response = await dio.get(getUrl);
+
+      if(response.statusCode == 200 || response.statusCode == 201)
+        {
+
+        }
+
 
     }
     catch (e)
     {
-      isLoading=false;
+      setState(() {
+        isLoading=false;
+      });
       error=e.toString();
     }
 

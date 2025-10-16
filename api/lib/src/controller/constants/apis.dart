@@ -6,7 +6,7 @@ class AppApis {
 
 
   //all users
-  static final String getAllUser='users';
+  static final String getAllUser='users/';
 
   //end points
 

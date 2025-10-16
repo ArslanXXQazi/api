@@ -18,7 +18,16 @@ class _AllUsersState extends State<AllUsers> {
 
   void fetchData () async {
 
-    
+    try
+    {
+
+    }
+    catch (e)
+    {
+      isLoading=false;
+      error=e.toString();
+    }
+
 
   }
 

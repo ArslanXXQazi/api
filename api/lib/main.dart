@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'APIS',
-      home: GetApi1(),
+      home: InsertView(),
     );
   }
 }

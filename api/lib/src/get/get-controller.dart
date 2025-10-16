@@ -29,15 +29,15 @@ class GetController extends GetxController
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    fetchData();
+    fetchData(2);
   }
 
-  void fetchData  () async
+  void fetchData  ( int userId ) async
   {
     isLoading.value=true;
     Dio dio =Dio();
    // String getUrlApi ="${AppApis.baseUrl}${AppApis.user1}";
-    String getUrlApi ="https://dummyjson.com/";
+    String getUrlApi ="https://dummyjson.com/users/${userId}";
     try{
 
       final response = await dio.get(getUrlApi);

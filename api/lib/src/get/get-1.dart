@@ -41,7 +41,7 @@ class GetApi1 extends StatelessWidget {
                children: [
                  Center(child: Blacktext(text: getController.error.value),),
                  ElevatedButton(onPressed: (){
-                   getController.fetchData();
+                   getController.fetchData(id);
                  }, child: getController.isLoading.value ? CircularProgressIndicator() :Blacktext(text: "RETRY")),
                ],
              ),

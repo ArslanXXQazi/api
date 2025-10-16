@@ -65,7 +65,9 @@ class _AllUsersState extends State<AllUsers> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: true,
         title: Blacktext(text: "Fetching All Users Data",fontSize: 20,fontWeight: FontWeight.w700,),
       ),

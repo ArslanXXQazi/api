@@ -14,6 +14,13 @@ class AllUsers extends StatefulWidget {
 class _AllUsersState extends State<AllUsers> {
   @override
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchData();
+  }
+
   bool isLoading=false;
   String error ="";
 
@@ -67,18 +74,25 @@ class _AllUsersState extends State<AllUsers> {
 
             Blacktext(text: error,fontSize: 18,color: Colors.red),
             SizedBox(height: 30),
-            IconButton(onPressed: (){}, icon: Icon(Icons.refresh)),
+            IconButton(onPressed: (){
+              fetchData();
+            }, icon: Icon(Icons.refresh)),
 
           ],),):
               ListView.builder(
                   itemCount: userList.length,
                   itemBuilder: (context,index){
                     return ListTile(
-                      
-                      leading: CircleAvatar(child: Image.network(userList[index]['image']),),
-                      title: Blacktext(text: userList[index]['']),
-                      
-                      
+                      onTap: (){
+                        showAboutDialog(
+                            context: context,
+
+                        );
+                      },
+                        leading: CircleAvatar(child: Image.network(userList[index]['image']),),
+                      title: Blacktext(text: userList[index]['firstName']),
+                      subtitle: Blacktext(text: userList[index]['lastName']),
+                      trailing: Blacktext(text: userList[index]['id'].toString())
                     );
                   },
               )

@@ -86,10 +86,7 @@ class _AllUsersState extends State<AllUsers> {
                   itemBuilder: (context,index){
                     return ListTile(
                       onTap: (){
-                        showAboutDialog(
-                            context: context,
-
-                        );
+                       Navigator.push(context, MaterialPageRoute(builder: (context)=>SingleUserData(userData: userList[index])));
                       },
                         leading: CircleAvatar(child: Image.network(userList[index]['image']),),
                       title: Blacktext(text: userList[index]['firstName']),
@@ -98,6 +95,27 @@ class _AllUsersState extends State<AllUsers> {
                     );
                   },
               )
+    );
+  }
+}
+
+
+
+/// Single user data class
+class SingleUserData extends StatelessWidget {
+
+  final Map<String,dynamic> userData;
+
+  const SingleUserData({super.key,required this.userData});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      
+      appBar: AppBar(
+        title: Blacktext(text: "${userData['firstName']}"),
+      ),
+      
     );
   }
 }

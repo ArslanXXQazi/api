@@ -113,7 +113,18 @@ class SingleUserData extends StatelessWidget {
     return Scaffold(
       
       appBar: AppBar(
-        title: Blacktext(text: "${userData['firstName']}"),
+        centerTitle: true,
+        title: Blacktext(text: "${userData['firstName']} ${userData['lastName']}",fontWeight: FontWeight.w700,fontSize: 24,),
+      ),
+      body: Padding(
+        padding:EdgeInsets.all(25),
+        child: Column(children: [
+
+          CircleAvatar(
+          child: Image.network(userData['image']),
+          )
+
+        ],),
       ),
       
     );

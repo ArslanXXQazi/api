@@ -136,6 +136,8 @@ class SingleUserData extends StatelessWidget {
           Blacktext(text: "CITY => ${userData['address']['city']}"),
           SizedBox(height: 20),
           Blacktext(text: "LAT => ${userData['address']['coordinates']['lat']}"),
+          SizedBox(height: 20),
+          Blacktext(text: "LNG => ${userData['address']['coordinates']['lng']}")
 
         ],),
       ),

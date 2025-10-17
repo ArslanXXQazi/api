@@ -131,6 +131,8 @@ class SingleUserData extends StatelessWidget {
           SizedBox(height: 20),
           Blacktext(text: "GENDER => ${userData['gender']}"),
           SizedBox(height: 20),
+          Blacktext(text: "ADDRESS => ${userData['address']['address']}"),
+          SizedBox(height: 20),
 
         ],),
       ),

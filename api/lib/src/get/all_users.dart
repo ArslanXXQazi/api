@@ -120,9 +120,16 @@ class SingleUserData extends StatelessWidget {
         padding:EdgeInsets.all(25),
         child: Column(children: [
 
-          CircleAvatar(
-          child: Image.network(userData['image']),
-          )
+          Center(
+            child: CircleAvatar(
+              radius: 50,
+            child: Image.network(userData['image']),
+            ),
+          ),
+          SizedBox(height: 30),
+          Blacktext(text: "AGE = ${ userData['age'].toString()}"),
+          SizedBox(height: 20),
+          
 
         ],),
       ),

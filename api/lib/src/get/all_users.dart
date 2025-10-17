@@ -127,9 +127,10 @@ class SingleUserData extends StatelessWidget {
             ),
           ),
           SizedBox(height: 30),
-          Blacktext(text: "AGE = ${ userData['age'].toString()}"),
+          Blacktext(text: "AGE => ${ userData['age'].toString()}"),
           SizedBox(height: 20),
-          
+          Blacktext(text: "GENDER => ${userData['gender']}"),
+          SizedBox(height: 20),
 
         ],),
       ),

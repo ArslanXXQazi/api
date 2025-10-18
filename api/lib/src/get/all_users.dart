@@ -48,6 +48,12 @@ class _AllUsersState extends State<AllUsers> {
             isLoading=false;
           });
         }
+      else
+        {
+          setState(() {
+            isLoading=false;
+          });
+        }
 
 
     }

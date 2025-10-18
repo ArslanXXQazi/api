@@ -96,7 +96,9 @@ class _FoodApiState extends State<FoodApi> {
                   radius: 20,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
-                    child: Image.network(foodList[index]['image'])),),
+                    child: Hero(
+                        tag: 'hero',
+                        child: Image.network(foodList[index]['image']))),),
                 title: Blacktext(text: "${foodList[index]['name']}",fontSize: 14,fontWeight: FontWeight.w900,),
                 subtitle: Blacktext(
                   text: "${foodList[index]['mealType'].join(', ')}", // List ko string mein convert karta hai
@@ -145,7 +147,9 @@ class DetailFoodScreen extends StatelessWidget {
                 height: 200,
                 width: double.infinity,
                 color: Colors.red,
-                child: Image.network(foodList['image'],fit: BoxFit.cover,),
+                child: Hero(
+                    tag: 'hero',
+                    child: Image.network(foodList['image'],fit: BoxFit.cover,)),
               ),
             ),
             SizedBox(height: 20),

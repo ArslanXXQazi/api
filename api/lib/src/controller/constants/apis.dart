@@ -16,4 +16,7 @@ class AppApis {
   }
 
 
+  static final String foodBase = "https://dummyjson.com/";
+  static final String allFood = "recipes";
+
 }

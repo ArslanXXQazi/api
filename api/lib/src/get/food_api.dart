@@ -97,7 +97,7 @@ class _FoodApiState extends State<FoodApi> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Hero(
-                        tag: 'hero',
+                        tag: 'food_image_${foodList[index]['id'] ?? index}',
                         child: Image.network(foodList[index]['image']))),),
                 title: Blacktext(text: "${foodList[index]['name']}",fontSize: 14,fontWeight: FontWeight.w900,),
                 subtitle: Blacktext(
@@ -148,7 +148,7 @@ class DetailFoodScreen extends StatelessWidget {
                 width: double.infinity,
                 color: Colors.red,
                 child: Hero(
-                    tag: 'hero',
+                    tag: 'food_image_${foodList['id']}',
                     child: Image.network(foodList['image'],fit: BoxFit.cover,)),
               ),
             ),

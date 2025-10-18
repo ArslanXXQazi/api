@@ -87,6 +87,11 @@ class _FoodApiState extends State<FoodApi> {
             child: Card(
               color: Colors.white,
               child: ListTile(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailFoodScreen(
+                    foodList: foodList[index],
+                  )));
+                },
                 leading: CircleAvatar(
                   radius: 20,
                   child: ClipRRect(
@@ -109,3 +114,130 @@ class _FoodApiState extends State<FoodApi> {
     );
   }
 }
+
+
+class DetailFoodScreen extends StatelessWidget {
+
+  final Map<String,dynamic> foodList;
+
+  const DetailFoodScreen({super.key,
+    required this.foodList
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: Blacktext(text: "Detail Screen"),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding:  EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
+                height: 200,
+                width: double.infinity,
+                color: Colors.red,
+                child: Image.network(foodList['image'],fit: BoxFit.cover,),
+              ),
+            ),
+            SizedBox(height: 20),
+            Blacktext(text: "${foodList['name']}",fontSize: 24,fontWeight: FontWeight.w700,color: Colors.red),
+              SizedBox(height: 20),
+              Blacktext(text: "PrepTime Minutes : ${foodList['prepTimeMinutes']}"),
+              SizedBox(height: 5),
+              Blacktext(text: "cookTime Minutes : ${foodList['cookTimeMinutes']}"),
+              SizedBox(height: 5),
+              Blacktext(text: "Ratings : ${foodList['rating']}"),
+              SizedBox(height: 5),
+              Blacktext(text: "Review Count : ${foodList['reviewCount']}"),
+              SizedBox(height: 5),
+              Blacktext(text: "Cuisine : ${foodList['cuisine']}"),
+              SizedBox(height: 20),
+              Card(
+                color: Colors.white,
+                margin: EdgeInsets.all(0),
+                child: Container(
+                    padding: EdgeInsets.all(10),
+                    width: double.infinity,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Blacktext(text: "ingredients",fontSize: 20,fontWeight: FontWeight.w700,),
+                        SizedBox(height: 20),
+                        Column(
+                            children: foodList['ingredients'].map<Widget>((ingredients){
+                              return Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    height: 8,
+                                    width: 8,
+                                    decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        shape: BoxShape.circle
+                                    ),
+                                  ),
+                                  SizedBox(width: 15),
+                                  Expanded(
+                                    child: Blacktext(text: ingredients),
+                                  ),
+
+                                ],);
+                            }).toList()
+                        )
+                      ],)
+                ),
+              ),
+              SizedBox(height: 20),
+              Card(
+                color: Colors.white,
+                margin: EdgeInsets.all(0),
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Blacktext(text: "instructions",fontSize: 20,fontWeight: FontWeight.w700,),
+                      SizedBox(height: 20),
+                      Column(
+                        children: foodList['instructions'].map<Widget>((instructions){
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                            Container(
+                              height: 8,
+                              width: 8,
+                              decoration: BoxDecoration(
+                                color: Colors.black,
+                                shape: BoxShape.circle
+                              ),
+                            ),
+                            SizedBox(width: 15),
+                            Expanded(
+                              child: Blacktext(text: instructions),
+                            ),
+
+                          ],);
+                        }).toList()
+                      )
+                    ],)
+                ),
+              ),
+              SizedBox(height: 20),
+
+          ],),
+        ),
+      ),
+    );
+  }
+}
+

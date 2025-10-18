@@ -93,11 +93,11 @@ class _FoodApiState extends State<FoodApi> {
                     borderRadius: BorderRadius.circular(20),
                     child: Image.network(foodList[index]['image'])),),
                 title: Blacktext(text: "${foodList[index]['name']}",fontSize: 14,fontWeight: FontWeight.w900,),
-                subtitle: Row(
-                  children: [
-                    Blacktext(text: "Meal Type : ",fontSize: 12,fontWeight: FontWeight.w700,),
-                    Blacktext(text: "${foodList[index]['mealType']}",fontSize: 12,fontWeight: FontWeight.w700,color: Colors.red,),
-                  ],
+                subtitle: Blacktext(
+                  text: "${foodList[index]['mealType'].join(', ')}", // List ko string mein convert karta hai
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.red,
                 ),
                 trailing: Blacktext(text: "⭐ ${foodList[index]['rating']}",fontSize: 12,color: Colors.green,fontWeight: FontWeight.w900,),
 

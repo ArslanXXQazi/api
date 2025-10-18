@@ -1,4 +1,6 @@
 import 'package:api/src/controller/components/black-text.dart';
+import 'package:api/src/controller/constants/apis.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class FoodApi extends StatefulWidget {
@@ -21,6 +23,14 @@ class _FoodApiState extends State<FoodApi> {
 
     try
     {
+
+      isLoading=true;
+      Dio dio = Dio();
+      String getFoodUrl = "${AppApis.foodBase}${AppApis.allFood}";
+      final response = dio.get(getFoodUrl);
+      
+
+
 
     }
     catch(e)

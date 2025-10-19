@@ -4,18 +4,23 @@ import 'package:get_storage/get_storage.dart';
 
 
 class InsertData extends StatelessWidget {
-  const InsertData({super.key});
+   InsertData({super.key});
 
   final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Column(children: [
-        FloatingActionButton(
-            child: Blacktext(text: "Fetch"),
-            onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>FetchData()));})
-      ],),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+          FloatingActionButton(
+              child: Blacktext(text: "Fetch"),
+              onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>FetchData()));})
+        ],),
+      ),
       appBar: AppBar(
         centerTitle: true,
         title: Blacktext(text: "Insert Data",fontSize: 24,fontWeight: FontWeight.w700,),
@@ -38,7 +43,7 @@ class InsertData extends StatelessWidget {
             ElevatedButton(onPressed: () async {
 
               GetStorage getStorage = GetStorage();
-              getStorage.write("Name", controller.text);
+              getStorage.write("name", controller.text);
 
             }, child: Blacktext(text: 'Insert Data'))
 
@@ -60,11 +65,11 @@ class FetchData extends StatefulWidget {
 class _FetchDataState extends State<FetchData> {
   @override
   
-  var name = '';
+  String name = '';
+  GetStorage getStorage = GetStorage();
   
   void fetchData () async {
-    
-    GetStorage getStorage = GetStorage();
+
     name = await getStorage.read('name');
     setState(() {
 
@@ -85,7 +90,20 @@ class _FetchDataState extends State<FetchData> {
         title: Blacktext(text: 'Fetch Data',fontSize: 24,fontWeight: FontWeight.w700,),
         centerTitle: true,
       ),
-      body: Center(child: Blacktext(text: name,fontSize: 30,fontWeight: FontWeight.w600,color: Colors.blue,),),
+      body: Center(child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Blacktext(text: name,fontSize: 30,fontWeight: FontWeight.w600,color: Colors.blue,),
+          SizedBox(height: 20),
+          ElevatedButton(onPressed: (){
+            getStorage.remove('name');
+            setState(() {
+
+            });
+          }, child: Blacktext(text: "Delete"))
+
+        ],
+      ),),
     );
   }
 }

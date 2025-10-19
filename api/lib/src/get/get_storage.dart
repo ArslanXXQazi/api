@@ -108,3 +108,49 @@ class _FetchDataState extends State<FetchData> {
   }
 }
 
+
+class UpdateData extends StatelessWidget {
+  UpdateData({super.key});
+
+  final TextEditingController controller = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+      appBar: AppBar(
+        centerTitle: true,
+        title: Blacktext(text: "Update Data",fontSize: 24,fontWeight: FontWeight.w700,),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+
+            TextFormField(
+              controller: controller,
+              decoration: InputDecoration(
+                  hintText: "Insert New Data Please"
+              ),
+            ),
+
+            SizedBox(height: 20),
+
+            ElevatedButton(onPressed: () async {
+
+              GetStorage getStorage = GetStorage();
+              getStorage.
+
+            }, child: Blacktext(text: 'Insert Data'))
+
+
+          ],),
+      ),
+
+
+    );
+  }
+}
+
+

@@ -98,7 +98,7 @@ class _FetchDataState extends State<FetchData> {
           ElevatedButton(onPressed: (){
             getStorage.remove('name');
             setState(() {
-
+              name= "NO DATA FOUND";
             });
           }, child: Blacktext(text: "Delete"))
 

@@ -59,8 +59,34 @@ class FetchData extends StatefulWidget {
 
 class _FetchDataState extends State<FetchData> {
   @override
+  
+  var name = '';
+  
+  void fetchData () async {
+    
+    GetStorage getStorage = GetStorage();
+    name = await getStorage.read('name');
+    setState(() {
+
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchData();
+  }
+
+
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Blacktext(text: 'Fetch Data',fontSize: 24,fontWeight: FontWeight.w700,),
+        centerTitle: true,
+      ),
+      body: Center(child: Blacktext(text: name,fontSize: 30,fontWeight: FontWeight.w600,color: Colors.blue,),),
+    );
   }
 }
 

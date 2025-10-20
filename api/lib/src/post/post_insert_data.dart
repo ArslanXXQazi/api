@@ -1,6 +1,7 @@
 
 
 import 'package:api/src/controller/components/black-text.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class PostInsertData extends StatefulWidget {
@@ -12,6 +13,23 @@ class PostInsertData extends StatefulWidget {
 
 class _PostInsertDataState extends State<PostInsertData> {
   @override
+
+  bool isLoading = false;
+  String error = '';
+
+  void insertData () async
+  {
+
+    String postUrl = 'https://api.restful-api.dev/objects';
+    Dio dio = Dio();
+    dio.post(postUrl);
+    
+
+
+
+  }
+
+
 
 
   final TextEditingController nameController = TextEditingController();
@@ -30,7 +48,6 @@ class _PostInsertDataState extends State<PostInsertData> {
         padding:  EdgeInsets.all(30),
         child: SingleChildScrollView(
           child: Column(children: [
-
             TextFormField(controller: nameController,decoration: InputDecoration(hintText: "Enter Name"),),
             SizedBox(height: 20),
             TextFormField(controller: yearController,decoration: InputDecoration(hintText: "Enter Year"),),

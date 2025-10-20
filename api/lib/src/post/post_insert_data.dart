@@ -21,19 +21,24 @@ class _PostInsertDataState extends State<PostInsertData> {
   {
 
     String postUrl = 'https://api.restful-api.dev/objects';
+    final Map<String,dynamic> requestBody = {
+      "name" : nameController.text,
+      "year" : int.parse(yearController.text),
+      "price": double.parse(priceController.text),
+      "CPU model" : cpuModelController.text,
+      "Hard disk size" : hardDiskSizeController.text
+    };
     Dio dio = Dio();
-    dio.post(
+  final response = await  dio.post(
         postUrl,
-        data: {
-
-          "name" : nameController.text,
-          "year" : int.parse(yearController.text),
-          "price": double.parse(priceController.text),
-          "CPU model" : cpuModelController.text,
-          "Hard disk size" : hardDiskSizeController.text
-
-        }
+        data: requestBody
     );
+
+  if (response.statusCode == 200 || response.statusCode== 201)
+    {
+      
+    }
+
 
   }
 

@@ -22,10 +22,18 @@ class _PostInsertDataState extends State<PostInsertData> {
 
     String postUrl = 'https://api.restful-api.dev/objects';
     Dio dio = Dio();
-    dio.post(postUrl);
-    
+    dio.post(
+        postUrl,
+        data: {
 
+          "name" : nameController.text,
+          "year" : int.parse(yearController.text),
+          "price": double.parse(priceController.text),
+          "CPU model" : cpuModelController.text,
+          "Hard disk size" : hardDiskSizeController.text
 
+        }
+    );
 
   }
 

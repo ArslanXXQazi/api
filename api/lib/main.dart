@@ -3,6 +3,7 @@ import 'package:api/src/get/food_api.dart';
 import 'package:api/src/get/get-1.dart';
 import 'package:api/src/get/get_storage.dart';
 import 'package:api/src/get/insert-id.dart';
+import 'package:api/src/post/post_insert_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
@@ -20,7 +21,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'APIS',
-      home: FoodApi(),
+      home: PostInsertData(),
+      //InsertData(),
+      //FoodApi(),
     );
   }
 }

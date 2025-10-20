@@ -28,21 +28,22 @@ class _PostInsertDataState extends State<PostInsertData> {
       ),
       body: Padding(
         padding:  EdgeInsets.all(30),
-        child: Column(children: [
+        child: SingleChildScrollView(
+          child: Column(children: [
 
-
-          TextFormField(controller: nameController,decoration: InputDecoration(hintText: "Enter Name"),),
-          SizedBox(height: 20),
-          TextFormField(controller: yearController,decoration: InputDecoration(hintText: "Enter Year"),),
-          SizedBox(height: 20),
-          TextFormField(controller: priceController,decoration: InputDecoration(hintText: "Enter Price"),),
-          SizedBox(height: 20),
-          TextFormField(controller: cpuModelController,decoration: InputDecoration(hintText: "Enter CPU Model"),),
-          SizedBox(height: 20),
-          TextFormField(controller: hardDiskSizeController,decoration: InputDecoration(hintText: "Enter Hard Size"),),
-          SizedBox(height: 30),
-          ElevatedButton(onPressed: (){}, child: Blacktext(text: "SAVE",fontSize: 16,)),
-        ],),
+            TextFormField(controller: nameController,decoration: InputDecoration(hintText: "Enter Name"),),
+            SizedBox(height: 20),
+            TextFormField(controller: yearController,decoration: InputDecoration(hintText: "Enter Year"),),
+            SizedBox(height: 20),
+            TextFormField(controller: priceController,decoration: InputDecoration(hintText: "Enter Price"),),
+            SizedBox(height: 20),
+            TextFormField(controller: cpuModelController,decoration: InputDecoration(hintText: "Enter CPU Model"),),
+            SizedBox(height: 20),
+            TextFormField(controller: hardDiskSizeController,decoration: InputDecoration(hintText: "Enter Hard Size"),),
+            SizedBox(height: 30),
+            ElevatedButton(onPressed: (){}, child: Blacktext(text: "SAVE",fontSize: 16,)),
+          ],),
+        ),
       ),
 
 

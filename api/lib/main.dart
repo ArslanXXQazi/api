@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'APIS',
-      home: InsertData(),
+      home: FoodApi(),
     );
   }
 }

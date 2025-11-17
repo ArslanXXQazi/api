@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class GetxGetController extends GetxController
 {
 
-  RxMap<String, dynamic> userData = <String, dynamic>{}.obs;
+ RxList userData = [].obs;
 
   final GetRepo repo = GetRepo();
 

@@ -1,3 +1,4 @@
+import 'package:api/new%20getx%20api/screens/getx_get_screen.dart';
 import 'package:api/src/get/all_users.dart';
 import 'package:api/src/get/food_api.dart';
 import 'package:api/src/get/get-1.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'APIS',
-      home: PostInsertData(),
+      home: GetxGetScreen()
+      //PostInsertData(),
       //InsertData(),
       //FoodApi(),
     );

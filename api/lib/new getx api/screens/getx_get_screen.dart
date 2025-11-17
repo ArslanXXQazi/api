@@ -1,4 +1,5 @@
 import 'package:api/new getx api/controllers/get_controller.dart';
+import 'package:api/new%20getx%20api/screens/user_details_screen.dart';
 import 'package:api/src/controller/components/black-text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,9 @@ class GetxGetScreen extends StatelessWidget {
                return Padding(
                  padding: const EdgeInsets.all(15),
                  child: GestureDetector(
-                   onTap: (){print("===== TAP=======");},
+                   onTap: (){
+                     Get.to(UserDetailsScreen());
+                   },
                    child: Card(
                      child: Container(
                         padding: EdgeInsets.all(15),

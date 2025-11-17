@@ -29,7 +29,7 @@ class GetxGetScreen extends StatelessWidget {
                  padding: const EdgeInsets.all(15),
                  child: GestureDetector(
                    onTap: (){
-                     Get.to(UserDetailsScreen());
+                     Get.to(UserDetailsScreen(user: user,));
                    },
                    child: Card(
                      child: Container(

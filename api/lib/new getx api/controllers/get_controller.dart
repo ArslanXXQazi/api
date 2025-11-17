@@ -13,19 +13,14 @@ class GetxGetController extends GetxController
     super.onInit();
 
   }
-
   void fetchUserData () async
   {
-
     try {
-      
+      final data = await repo.getData();
+      userData.value = data;
     }
     catch(e){
-
+      print("=========>>>ERROR<<<===========");
     }
-
-
   }
-
-
 }

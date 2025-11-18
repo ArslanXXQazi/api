@@ -18,9 +18,10 @@ class GetxGetScreen extends StatelessWidget {
 
       body: GetBuilder<GetxGetController>(
         builder: (controller){
-          if(controller.userData.isEmpty){
-            return Center(child: Blacktext(text: "Loading..."));
-          } else {
+          if(controller.isLoading.value){
+            return Center(child: CircularProgressIndicator());
+          }
+          else {
             return ListView.builder(
               itemCount: controller.userData.length,
               itemBuilder: (context,index){

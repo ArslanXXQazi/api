@@ -6,7 +6,6 @@ class GetxGetController extends GetxController
 
  RxList userData = [].obs;
  var isLoading = false.obs;
- var isError = ''.obs;
 
   final GetRepo repo = GetRepo();
 

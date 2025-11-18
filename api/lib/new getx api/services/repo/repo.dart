@@ -6,6 +6,9 @@ import 'package:dio/dio.dart';
 
 class GetRepo
 {
+
+  // get api logic
+
   Future<List<dynamic>> getData() async
   {
     var dio = Dio();
@@ -21,4 +24,7 @@ class GetRepo
       throw Exception(response.statusMessage);
     }
   }
+
+
+  
 }

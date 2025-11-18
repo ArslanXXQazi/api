@@ -5,6 +5,8 @@ class GetxGetController extends GetxController
 {
 
  RxList userData = [].obs;
+ var isLoading = false.obs;
+ var isError = ''.obs;
 
   final GetRepo repo = GetRepo();
 
@@ -17,12 +19,16 @@ class GetxGetController extends GetxController
   void fetchUserData () async
   {
     try {
+      isLoading.value=true;
       final data = await repo.getData();
       userData.value = data;
       update();
+      isLoading.value=false;
     }
     catch(e){
+      print(e.toString());
       print("=========>>>ERROR<<<===========");
+      isLoading.value=false;
     }
   }
 }

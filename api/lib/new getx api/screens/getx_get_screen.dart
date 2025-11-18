@@ -13,6 +13,7 @@ class GetxGetScreen extends StatelessWidget {
     final controller = Get.put(GetxGetController());
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(title: Blacktext(text: "GET API",fontSize: 20,color: Colors.white,fontWeight: FontWeight.w700,),centerTitle: true,backgroundColor: Colors.yellow,),
 
       body: GetBuilder<GetxGetController>(
@@ -70,8 +71,6 @@ class GetxGetScreen extends StatelessWidget {
                             Blacktext(text: "Country : ${user['address']['country']}"),
                             SizedBox(height: 15),
                             Blacktext(text: "Address : ${user['address']['address']}"),
-
-
                           ],
                         ),
                       ),

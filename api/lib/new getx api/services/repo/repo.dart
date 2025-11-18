@@ -1,15 +1,15 @@
 
 import 'dart:convert';
 
+import 'package:api/src/controller/constants/apis.dart';
 import 'package:dio/dio.dart';
 
 class GetRepo
 {
-
   Future<List<dynamic>> getData() async
   {
     var dio = Dio();
-    String getUrl ="https://dummyjson.com/users";
+    String getUrl ="${AppApis.baseUrl}${AppApis.getAllUser}";
     final response = await dio.get(getUrl);
     final data = response.data;
 
@@ -21,5 +21,4 @@ class GetRepo
       throw Exception(response.statusMessage);
     }
   }
-
 }

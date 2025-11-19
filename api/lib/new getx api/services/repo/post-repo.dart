@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 class PostRepo
@@ -5,24 +7,33 @@ class PostRepo
 
   Dio dio = Dio();
 
-  Future<int>  postData (String id , String name, int year, double price,String CPUmodel, String hardDiskSize) async
+  Future<Map<String,dynamic>?> postData (String id , String name, int year, double price,String CPUmodel, String hardDiskSize) async
   {
     String postUrl ='https://api.restful-api.dev/objects';
+
+    final data = json.encode({
+      "id": id,
+      "name":name,
+      "data":{
+        "year":year,
+        "price":price,
+        "CPU model":CPUmodel,
+        "Hard disk size":hardDiskSize,
+      }
+    });
     try{
       final response = await dio.post(postUrl,
-        data: [
-          "id": id,
-          "name":name,
-          "data":{
-          "year":year,
-          "price":price,
-          "CPU model":CPUmodel,
-          "Hard disk size":hardDiskSize,
-          }
-        ]
+        data: data
       );
 
-      return response.statusCode
+      if(response.statusCode==200 || response.statusCode==2001)
+        {
+          return response.data;
+        }
+      else
+        {
+          
+        }
 
     }
     catch(e){

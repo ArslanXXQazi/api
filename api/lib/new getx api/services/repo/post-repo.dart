@@ -32,12 +32,12 @@ class PostRepo
         }
       else
         {
-          
+          throw "Failed";
         }
 
     }
     catch(e){
-
+      print(e.toString());
     }
   }
 

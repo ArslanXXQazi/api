@@ -15,9 +15,8 @@ class InsertController extends GetxController
 
   PostRepo postRepo = PostRepo();
 
-  insertdata (){
-
-    postRepo.postData(
+  insertdata() async {
+      final result = await  postRepo.postData(
         idController.text,
         nameController.text,
         int.parse(yearController.text),
@@ -25,8 +24,14 @@ class InsertController extends GetxController
         cpuModelController.text,
         hardSizeController.text);
 
+      if (result !=null)
+        {
+          Get.snackbar("Success", "Data Insert Successfully");
+        }
+      else
+        {
+          Get.snackbar("Error", "Failed to insert Data");
+        }
+
   }
-
-
-
 }

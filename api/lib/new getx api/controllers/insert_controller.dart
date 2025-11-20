@@ -13,25 +13,49 @@ class InsertController extends GetxController
   final TextEditingController cpuModelController= TextEditingController();
   final TextEditingController hardSizeController= TextEditingController();
 
+  var isLoading = false.obs;
+  var errorMessage = ''.obs;
+
+
   PostRepo postRepo = PostRepo();
 
-  insertdata() async {
-      final result = await  postRepo.postData(
-        idController.text,
-        nameController.text,
-        int.parse(yearController.text),
-        double.parse(priceController.text),
-        cpuModelController.text,
-        hardSizeController.text);
+  Future<void> insertData() async {
 
-      if (result !=null)
-        {
-          Get.snackbar("Success", "Data Insert Successfully");
-        }
-      else
-        {
-          Get.snackbar("Error", "Failed to insert Data");
-        }
+      try
+          {
+
+            if (nameController.text.isEmpty ||
+                yearController.text.isEmpty ||
+                priceController.text.isEmpty ||
+                cpuModelController.text.isEmpty ||
+                hardSizeController.text.isEmpty)
+            {
+              Get.snackbar("Error", "Please fill all fields first");
+            }
+
+            isLoading.value=true;
+            final result = await  postRepo.postData(
+                idController.text,
+                nameController.text,
+                int.parse(yearController.text),
+                double.parse(priceController.text),
+                cpuModelController.text,
+                hardSizeController.text);
+
+            if (result !=null)
+            {
+              Get.snackbar("Success", "Data Insert Successfully");
+            }
+            else
+            {
+              Get.snackbar("Error", "Failed to insert Data");
+            }
+            isLoading.value=false;
+          }
+          catch(e){
+            isLoading.value=false;
+            print(e.toString());
+          }
 
   }
 }

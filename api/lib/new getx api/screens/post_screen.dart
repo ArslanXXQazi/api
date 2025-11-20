@@ -14,7 +14,7 @@ class PostScreen extends StatelessWidget {
     InsertController insertController = Get.put(InsertController());
 
     return Scaffold(
-      appBar: AppBar(title: Blacktext(text: "POST API",fontSize: 20,color: Colors.white,fontWeight: FontWeight.w700,),centerTitle: true,backgroundColor: Colors.yellow,),
+      appBar: AppBar(title: Blacktext(text: "POST API2",fontSize: 20,color: Colors.white,fontWeight: FontWeight.w700,),centerTitle: true,backgroundColor: Colors.yellow,),
       body: Padding(
         padding:  EdgeInsets.all(30),
         child: SingleChildScrollView(
@@ -29,9 +29,19 @@ class PostScreen extends StatelessWidget {
             SizedBox(height: 20),
             TextFormField(controller: insertController.hardSizeController,decoration: InputDecoration(hintText: "Enter Hard Size"),),
             SizedBox(height: 30),
-            ElevatedButton(onPressed: (){
-              insertController.insertdata();
-            }, child: Blacktext(text: "SAVE",fontSize: 16,)),
+            Obx((){
+
+              return
+              SizedBox(
+                height: 60,width: 200,
+                child: ElevatedButton(onPressed: (){
+                  insertController.insertData();
+                }, child:
+                insertController.isLoading.value ? Center(child: CircularProgressIndicator()): Blacktext(text:  "SAVE",fontSize: 16,
+                )),
+              );
+
+            })
           ],),
         ),
       ),

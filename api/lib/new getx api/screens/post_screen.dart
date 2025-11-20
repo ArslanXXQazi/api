@@ -30,9 +30,13 @@ class PostScreen extends StatelessWidget {
             TextFormField(controller: insertController.hardSizeController,decoration: InputDecoration(hintText: "Enter Hard Size"),),
             SizedBox(height: 30),
             Obx((){
-
-              return
-              SizedBox(
+              return insertController.errorMessage.isNotEmpty ? Center(child: Column(
+                children: [
+                  Blacktext(text: insertController.errorMessage.value),
+                  ElevatedButton(onPressed: (){insertController.insertData();}, child: Blacktext(text: "Retry"))
+                ],
+              )):
+                SizedBox(
                 height: 60,width: 200,
                 child: ElevatedButton(onPressed: (){
                   insertController.insertData();

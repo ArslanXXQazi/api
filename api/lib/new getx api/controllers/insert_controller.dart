@@ -31,8 +31,10 @@ class InsertController extends GetxController
                 hardSizeController.text.isEmpty)
             {
               Get.snackbar("Error", "Please fill all fields first");
+              return;
             }
 
+            errorMessage.value = '';
             isLoading.value=true;
             final result = await  postRepo.postData(
                 idController.text,
@@ -54,7 +56,7 @@ class InsertController extends GetxController
           }
           catch(e){
             isLoading.value=false;
-            print(e.toString());
+            errorMessage.value = "Something went wrong\n${e.toString()}";
           }
 
   }

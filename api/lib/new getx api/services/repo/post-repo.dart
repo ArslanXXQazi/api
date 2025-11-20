@@ -6,7 +6,6 @@ class PostRepo
 {
 
   Dio dio = Dio();
-
   Future<Map<String,dynamic>?> postData (String id , String name, int year, double price,String CPUmodel, String hardDiskSize) async
   {
     String postUrl ='https://api.restful-api.dev/objects';

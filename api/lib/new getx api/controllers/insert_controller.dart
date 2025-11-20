@@ -1,6 +1,8 @@
 import 'package:api/new%20getx%20api/screens/getx_get_screen.dart';
 import 'package:api/new%20getx%20api/services/repo/post-repo.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class InsertController extends GetxController
@@ -54,10 +56,19 @@ class InsertController extends GetxController
             }
             isLoading.value=false;
           }
-          catch(e){
-            isLoading.value=false;
-            errorMessage.value = "Something went wrong\n${e.toString()}";
-          }
+      catch(e){
+        isLoading.value = false;
+
+        String errorMsg = e.toString().replaceAll("Exception: ", "");
+
+        // No internet ya timeout ke liye special message
+        if (errorMsg.contains("Internet") || errorMsg.contains("Timeout") || errorMsg.contains("Socket")) {
+          errorMessage.value = "No Internet Connection!\nPlease check your network and try again.";
+          Get.snackbar("No Internet", "Check your connection", backgroundColor: Colors.red, colorText: Colors.white);
+        } else {
+          errorMessage.value = errorMsg;
+        }
+      }
 
   }
 }

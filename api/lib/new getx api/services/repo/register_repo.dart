@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:get/get.dart';
 
 class RegisterRepo
 {
@@ -32,13 +33,21 @@ class RegisterRepo
 
       if(response.statusCode==200 || response.statusCode==201)
         {
-
+          
+          print("=====>> User registered successfully <<=====");
+          Get.snackbar("success", "User registered successfully");
+          
         }
 
+      else{
+        print("=====>> Failed <<=====");
+        Get.snackbar("Failed", "User not registered");
+      }
 
     }
     catch(e){
-
+      print("=====>> Failed ${e.toString()}<<=====");
+      Get.snackbar("Faild", "User User not registered");
     }
 
 

@@ -51,10 +51,14 @@ class InsertController extends GetxController
       passwordController.text,
       );
 
-      if ( response !=null)
+      if(response != null && response ['message'] !=null )
         {
-          Get.snackbar("Success", "User Registered Successfully",
-              backgroundColor: Colors.green, colorText: Colors.white);
+          Get.snackbar(
+          response['status'].toString().toUpperCase(),
+          response['message'].toString(),
+          backgroundColor: response['status']=='success'?  Colors.green : Colors.red,
+          colorText: Colors.white,
+          );
         }
       isLoading.value=false;
 

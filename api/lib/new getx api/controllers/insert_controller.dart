@@ -43,6 +43,11 @@ class InsertController extends GetxController
         return;
       }
 
+      if (passwordController.text.length <=8 && confirmPassController.text.length <=8) {
+        Get.snackbar("Error", "Passwords must be 8 digit");
+        return;
+      }
+
       isLoading.value=true;
       final response = await registerRepo.register(
       nameController.text,

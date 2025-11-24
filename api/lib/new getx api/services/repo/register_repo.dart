@@ -9,7 +9,8 @@ class RegisterRepo
 
 
   Dio dio = Dio();
-  Future<void> register(String name , String lastName, String email, String password) async
+
+  Future<dynamic> register(String name , String lastName, String email, String password) async
   {
 
     String registerUrl = "https://etalk.mtai.live/api/user/register";
@@ -21,8 +22,6 @@ class RegisterRepo
       "confirm_password":password,
 
     });
-
-
 
     try{
 
@@ -36,6 +35,7 @@ class RegisterRepo
           
           print("=====>> User registered successfully <<=====");
           Get.snackbar("success", "User registered successfully");
+          return response.data;
           
         }
 

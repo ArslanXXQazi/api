@@ -1,5 +1,6 @@
 import 'package:api/new%20getx%20api/screens/getx_get_screen.dart';
 import 'package:api/new%20getx%20api/services/repo/post-repo.dart';
+import 'package:api/new%20getx%20api/services/repo/register_repo.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,16 +11,62 @@ class InsertController extends GetxController
 
   final TextEditingController idController= TextEditingController();
   final TextEditingController nameController= TextEditingController();
+  final TextEditingController lastNameController= TextEditingController();
   final TextEditingController yearController= TextEditingController();
   final TextEditingController priceController= TextEditingController();
   final TextEditingController cpuModelController= TextEditingController();
   final TextEditingController hardSizeController= TextEditingController();
+  final TextEditingController emailController= TextEditingController();
+  final TextEditingController passwordController= TextEditingController();
+  final TextEditingController confirmPassController= TextEditingController();
 
   var isLoading = false.obs;
   var errorMessage = ''.obs;
-
-
   PostRepo postRepo = PostRepo();
+  RegisterRepo registerRepo = RegisterRepo();
+
+  Future <void> registerUser () async {
+
+    try{
+
+      if (nameController.text.isEmpty ||
+          emailController.text.isEmpty ||
+          passwordController.text.isEmpty ||
+          confirmPassController.text.isEmpty
+      ) {
+        Get.snackbar("Error", "Please fill all fields first");
+        return;
+      }
+
+      if (passwordController.text != confirmPassController.text) {
+        Get.snackbar("Error", "Passwords do not match");
+        return;
+      }
+
+      isLoading.value=true;
+      final response = await registerRepo.register(
+      nameController.text,
+      lastNameController.text,
+      emailController.text,
+      passwordController.text,
+      );
+
+      if ( response !=null)
+        {
+          Get.snackbar("Success", "User Registered Successfully",
+              backgroundColor: Colors.green, colorText: Colors.white);
+        }
+      isLoading.value=false;
+
+    }
+    catch (e) {
+      errorMessage.value = e.toString();
+      Get.snackbar("Error", errorMessage.value,
+          backgroundColor: Colors.red, colorText: Colors.white);
+      isLoading.value=false;
+    }
+
+  }
 
   Future<void> insertData() async {
 
@@ -35,6 +82,8 @@ class InsertController extends GetxController
               Get.snackbar("Error", "Please fill all fields first");
               return;
             }
+
+
 
             errorMessage.value = '';
             isLoading.value=true;

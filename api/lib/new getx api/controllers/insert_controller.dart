@@ -21,7 +21,7 @@ class InsertController extends GetxController
 
   var isLoading = false.obs;
   var errorMessage = ''.obs;
-  var userToken = ''.obs; // Store user token after registration
+  var userToken = ''.obs;
   PostRepo postRepo = PostRepo();
   RegisterRepo registerRepo = RegisterRepo();
 
@@ -82,11 +82,11 @@ class InsertController extends GetxController
 
         // Navigate to OTP screen
         print("====> Navigating to OTP screen");
-        await Future.delayed(Duration(milliseconds: 2000));
         Get.to(() => OtpVerificationScreen(
           email: emailController.text,
           token: userToken.value,
         ));
+
       }
       else if(response != null && response['message'] != null)
       {

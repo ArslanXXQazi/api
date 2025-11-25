@@ -89,6 +89,18 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
               // OTP Input Fields
 
+              TextFormField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.grey,width: 2)
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(color: Colors.blue,width: 2)
+                  ),
+                ),
+              ),
 
               const SizedBox(height: 30),
 

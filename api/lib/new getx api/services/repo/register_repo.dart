@@ -94,15 +94,24 @@ class RegisterRepo
       if (response.statusCode==200 || response.statusCode==201)
         {
           print("===>> OTP VERIFIED");
+          print("OTP Verification Response: ${response.data}");
           return response.data;
         }
       else{
         print("===>> OTP VERIFICATION FAILED");
+        print("OTP Verification Response: ${response.data}");
         return response.data;
       }
     }
     catch(e){
+      if (e is DioException) {
+        print("STATUS CODE: ${e.response?.statusCode}");
+        print("RESPONSE DATA: ${e.response?.data}");
+        // Return the server response even in error
+        return e.response?.data;
+      }
       print("===>> OTP VERIFICATION FAILED ${e.toString()}");
+      return null;
     }
   }
 

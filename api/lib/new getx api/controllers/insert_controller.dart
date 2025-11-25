@@ -138,18 +138,79 @@ class InsertController extends GetxController
 
 
   //verification otp function
-  Future<void> verifyOtp() async {
+  Future<void> verifyOtp(String email, String otpCode) async {
 
     try{
-      
+      // Validate OTP input
+      if(otpCode.isEmpty || otpCode.length != 4) {
+        Get.snackbar(
+          "ERROR",
+          "Please enter a valid 4-digit OTP",
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
+        return;
+      }
+
+      // Convert OTP string to int
+      int otp = int.tryParse(otpCode) ?? 0;
+      if(otp == 0) {
+        Get.snackbar(
+          "ERROR",
+          "Invalid OTP format",
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
+        return;
+      }
+
       isLoading.value=true;
-      
+
+      // Call verify OTP API
+      final response = await registerRepo.verifyOtp(email, otp);
+
+      isLoading.value=false;
+
+      print("====> OTP Verification Response: $response");
+
+      if(response != null) {
+        // Check if verification was successful
+        if(response['status'] == 'success' || response['message']?.toString().toLowerCase().contains('verified') == true) {
+          // OTP Verified Successfully
+          Get.snackbar(
+            response['status'].toString().toUpperCase(),
+            response['message']?.toString() ?? "OTP Verified Successfully!",
+            backgroundColor: Colors.green,
+            colorText: Colors.white,
+          );
+          
+          // You can navigate to next screen here if needed
+          // Get.offAll(() => HomeScreen());
+          
+        } else {
+          // OTP Verification Failed
+          Get.snackbar(
+            response['status'].toString().toUpperCase(),
+            response['message']?.toString() ?? "OTP Verification Failed!",
+            backgroundColor: Colors.red,
+            colorText: Colors.white,
+          );
+        }
+      } else {
+        // No response received
+        Get.snackbar(
+          "ERROR",
+          "OTP Verification Failed! Please try again.",
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
+      }
 
     }
     catch(e){
-      
+      isLoading.value=false;
+      print("====> OTP Verification Error: ${e.toString()}");
     }
-
   }
 
 

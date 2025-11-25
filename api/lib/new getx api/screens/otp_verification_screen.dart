@@ -1,7 +1,6 @@
-import 'package:api/new%20getx%20api/components/common_widgets/custom_text_field.dart';
+import 'package:api/new%20getx%20api/controllers/insert_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:api/src/controller/components/black-text.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class OtpVerificationScreen extends StatelessWidget {
@@ -17,6 +16,8 @@ class OtpVerificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    // Get the controller instance
+    final InsertController insertController = Get.find<InsertController>();
     final TextEditingController otpController = TextEditingController();
 
     return Scaffold(
@@ -139,56 +140,27 @@ class OtpVerificationScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 height: 56,
-                child: ElevatedButton(
-                  onPressed: (){},
+                child: Obx(() => ElevatedButton(
+                  onPressed: (){
+                    insertController.verifyOtp(email, otpController.text);
+                  },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: insertController.isLoading.value? Colors.black : Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                     elevation: 0,
                   ),
-                  child: const Blacktext(
-                    text: 'Verify OTP',
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
+                  child: insertController.isLoading.value
+                    ? const Blacktext(text: "Verifying...",fontSize: 16,fontWeight: FontWeight.bold,color: Colors.white,)
+                    : const Blacktext(
+                        text: 'Verify OTP',
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                )),
               ),
-
-              const SizedBox(height: 20),
-
-              // // Timer (Optional - for future implementation)
-              // Container(
-              //   padding: const EdgeInsets.symmetric(
-              //     horizontal: 16,
-              //     vertical: 12,
-              //   ),
-              //   decoration: BoxDecoration(
-              //     color: Colors.blue.withOpacity(0.1),
-              //     borderRadius: BorderRadius.circular(8),
-              //   ),
-              //   child: Row(
-              //     mainAxisSize: MainAxisSize.min,
-              //     children: [
-              //       const Icon(
-              //         Icons.access_time,
-              //         size: 18,
-              //         color: Colors.blue,
-              //       ),
-              //       const SizedBox(width: 8),
-              //       Blacktext(
-              //         text: 'Code expires in 05:00',
-              //         fontSize: 14,
-              //         fontWeight: FontWeight.w500,
-              //         color: Colors.blue[700],
-              //       ),
-              //     ],
-              //   ),
-              // ),
-
-              const SizedBox(height: 30),
             ],
           ),
         ),

@@ -56,20 +56,6 @@ class RegisterScreen extends StatelessWidget {
 
                   const SizedBox(height: 10),
 
-                  // Last Name Field
-                  const Blacktext(
-                    text: 'Last Name',
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  const SizedBox(height: 8),
-                  CustomTextField(
-                    controller: insertController.lastNameController,
-                    hintText: 'Enter your last name',
-                  ),
-
-                  const SizedBox(height: 10),
-
                   const Blacktext(
                     text: 'Email',
                     fontSize: 14,

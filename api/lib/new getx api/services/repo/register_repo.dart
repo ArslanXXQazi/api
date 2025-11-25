@@ -46,6 +46,21 @@ class RegisterRepo
   }
 
 
+  Future<dynamic>sendOtp (String token) async {
+
+   final  String sendUrl = "https://etalk.mtai.live/api/user/send-verification-code";
+   final response = await dio.post(
+     sendUrl,
+     options: Options(
+       headers: {'Authorization':token}
+     )
+   );
+
+
+
+  }
+
+
 
 
 

@@ -155,12 +155,49 @@ class InsertController extends GetxController
       }
 
       int otp = int.parse(otpCode) ?? 0;
-      
+      if(otp == 0) {
+              Get.snackbar(
+                "ERROR",
+                "Invalid OTP format",
+                backgroundColor: Colors.red,
+                colorText: Colors.white,
+              );
+              return;
+            }
 
-
+      final response = await registerRepo.verifyOtp(email, otp);
+      if(response !=null ){
+        if(response['status']=='success' || response['message']?.toString().toLowerCase().contains('verified') == true )
+          {
+            Get.snackbar(
+             response['status'].toString().toUpperCase(),
+             response['message']?.toString() ?? "OTP Verified Successfully!",
+             backgroundColor: Colors.green,
+              colorText: Colors.white,
+            );
+          }
+          else{
+                  Get.snackbar(
+                    response['status'].toString().toUpperCase(),
+                    response['message']?.toString() ?? "OTP Verification Failed!",
+                    backgroundColor: Colors.red,
+                    colorText: Colors.white,
+                  );
+        }
+      }
+      else{
+              Get.snackbar(
+                "ERROR",
+                "OTP Verification Failed! Please try again.",
+                backgroundColor: Colors.red,
+                colorText: Colors.white,
+              );
+      }
+      isLoading.value=false;
     }
     catch(e){
-
+          isLoading.value=false;
+          print("====> OTP Verification Error: ${e.toString()}");
     }
 
   }
@@ -247,7 +284,6 @@ class InsertController extends GetxController
 
       try
           {
-
             if (nameController.text.isEmpty ||
                 yearController.text.isEmpty ||
                 priceController.text.isEmpty ||
@@ -257,9 +293,6 @@ class InsertController extends GetxController
               Get.snackbar("Error", "Please fill all fields first");
               return;
             }
-
-
-
             errorMessage.value = '';
             isLoading.value=true;
             final result = await  postRepo.postData(
@@ -293,6 +326,5 @@ class InsertController extends GetxController
           errorMessage.value = errorMsg;
         }
       }
-
   }
 }

@@ -142,7 +142,7 @@ class OtpVerificationScreen extends StatelessWidget {
                 height: 56,
                 child: Obx(() => ElevatedButton(
                   onPressed: (){
-                   // insertController.verifyOtp(email, otpController.text);
+                    insertController.verifyOtp(email, otpController.text);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: insertController.isLoading.value? Colors.black : Colors.blue,

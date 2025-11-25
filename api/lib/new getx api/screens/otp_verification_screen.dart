@@ -4,7 +4,7 @@ import 'package:api/src/controller/components/black-text.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class OtpVerificationScreen extends StatefulWidget {
+class OtpVerificationScreen extends StatelessWidget {
   final String email;
   final String token;
   
@@ -15,14 +15,10 @@ class OtpVerificationScreen extends StatefulWidget {
   });
 
   @override
-  State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
-}
-
-class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
-
-
-  @override
   Widget build(BuildContext context) {
+
+    final TextEditingController otpController = TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -65,7 +61,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
-              
+
               const SizedBox(height: 12),
 
               // Subtitle
@@ -75,11 +71,11 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 fontWeight: FontWeight.w400,
                 color: Colors.grey[600],
               ),
-              
+
               const SizedBox(height: 4),
-              
+
               Blacktext(
-                text: widget.email,
+                text: email,
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
                 color: Colors.black,
@@ -90,6 +86,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               // OTP Input Fields
 
               TextFormField(
+                controller: otpController,
                 keyboardType: TextInputType.numberWithOptions(),
                 maxLength: 4,
                 decoration: InputDecoration(

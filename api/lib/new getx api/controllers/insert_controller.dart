@@ -26,7 +26,6 @@ class InsertController extends GetxController
   RegisterRepo registerRepo = RegisterRepo();
 
   Future <void> registerUser () async {
-
     try{
 
       if (nameController.text.isEmpty ||
@@ -109,7 +108,7 @@ class InsertController extends GetxController
 
   }
 
-
+  //send otp function
   Future <void> sendOtp () async {
 
     try{
@@ -138,27 +137,20 @@ class InsertController extends GetxController
   }
 
 
+  //verification otp function
+  Future<void> verifyOtp() async {
 
-  // Method to send OTP
-  // Future<void> sendOtpToUser() async {
-  //   try {
-  //     if(userToken.value.isEmpty) {
-  //       print("====> No token available");
-  //       return;
-  //     }
-  //
-  //     final otpResponse = await registerRepo.sendOtp(userToken.value);
-  //
-  //     if(otpResponse != null) {
-  //       print("====> OTP sent successfully");
-  //     } else {
-  //       print("====> Failed to send OTP");
-  //     }
-  //   } catch(e) {
-  //     print("====> OTP Error: ${e.toString()}");
-  //   }
-  // }
+    try{
 
+    }
+    catch(e){
+      
+    }
+
+  }
+
+
+  //insert data  function
   Future<void> insertData() async {
 
       try

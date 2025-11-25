@@ -90,6 +90,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               // OTP Input Fields
 
               TextFormField(
+                keyboardType: TextInputType.numberWithOptions(),
+                maxLength: 4,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -99,6 +101,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: Colors.blue,width: 2)
                   ),
+                  hintText: "Enter 4 digit otp",
                 ),
               ),
 

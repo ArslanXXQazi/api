@@ -6,10 +6,9 @@ import 'package:get/get.dart';
 
 class RegisterRepo
 {
-
-
   Dio dio = Dio();
 
+  //registration repo
   Future<dynamic> register(String name , String lastName, String email, String password) async {
     String registerUrl = "https://etalk.mtai.live/api/user/register";
     final data = {
@@ -46,8 +45,8 @@ class RegisterRepo
   }
 
 
+  //send otp code repo
   Future<dynamic>sendOtp (String token) async {
-
     final String sendUrl = "https://etalk.mtai.live/api/user/send-verification-code";
     try{
       final response = await dio.post(
@@ -73,46 +72,38 @@ class RegisterRepo
       print(e.toString());
       return null;
     }
-
-
   }
 
 
+  //verify otp repo
+  Future<dynamic>verifyOtp (String email, int otp) async {
 
+    final String verifyUrl = "https://etalk.mtai.live/api/user/verify-otp";
 
-  // Future<dynamic> sendOtp(String token) async {
-  //   final String sendUrl = "https://etalk.mtai.live/api/user/send-verification-code";
-  //
-  //   try {
-  //     final response = await dio.post(
-  //       sendUrl,
-  //       options: Options(
-  //         headers: {'Authorization': 'Bearer $token'} // Bearer token format
-  //       )
-  //     );
-  //
-  //     if (response.statusCode == 200 || response.statusCode == 201) {
-  //       print("=====>> OTP sent successfully <<=====");
-  //       print("OTP Response: ${response.data}");
-  //       return response.data;
-  //     } else {
-  //       print("=====>> OTP send failed <<=====");
-  //       return response.data;
-  //     }
-  //   } catch (e) {
-  //     if (e is DioException) {
-  //       print("OTP ERROR - STATUS CODE: ${e.response?.statusCode}");
-  //       print("OTP ERROR - RESPONSE: ${e.response?.data}");
-  //       return e.response?.data;
-  //     }
-  //     print("=====>> OTP Failed: ${e.toString()} <<=====");
-  //     return null;
-  //   }
-  // }
+    final data = {
+      "email":email,
+      "verification_code":otp
+    };
 
+    try{
+      final response = await dio.post(
+          verifyUrl,
+          data: data
+      );
 
-
-
-
+      if (response.statusCode==200 || response.statusCode==201)
+        {
+          print("===>> OTP VERIFIED");
+          return response.data;
+        }
+      else{
+        print("===>> OTP VERIFICATION FAILED");
+        return response.data;
+      }
+    }
+    catch(e){
+      print("===>> OTP VERIFICATION FAILED ${e.toString()}");
+    }
+  }
 
 }

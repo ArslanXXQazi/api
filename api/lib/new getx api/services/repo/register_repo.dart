@@ -46,18 +46,34 @@ class RegisterRepo
   }
 
 
-  Future<dynamic>sendOtp (String token) async {
+  Future<dynamic> sendOtp(String token) async {
+    final String sendUrl = "https://etalk.mtai.live/api/user/send-verification-code";
+    
+    try {
+      final response = await dio.post(
+        sendUrl,
+        options: Options(
+          headers: {'Authorization': 'Bearer $token'} // Bearer token format
+        )
+      );
 
-   final  String sendUrl = "https://etalk.mtai.live/api/user/send-verification-code";
-   final response = await dio.post(
-     sendUrl,
-     options: Options(
-       headers: {'Authorization':token}
-     )
-   );
-
-
-
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        print("=====>> OTP sent successfully <<=====");
+        print("OTP Response: ${response.data}");
+        return response.data;
+      } else {
+        print("=====>> OTP send failed <<=====");
+        return response.data;
+      }
+    } catch (e) {
+      if (e is DioException) {
+        print("OTP ERROR - STATUS CODE: ${e.response?.statusCode}");
+        print("OTP ERROR - RESPONSE: ${e.response?.data}");
+        return e.response?.data;
+      }
+      print("=====>> OTP Failed: ${e.toString()} <<=====");
+      return null;
+    }
   }
 
 

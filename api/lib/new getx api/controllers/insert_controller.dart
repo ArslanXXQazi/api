@@ -23,6 +23,7 @@ class InsertController extends GetxController
 
   var isLoading = false.obs;
   var errorMessage = ''.obs;
+  var userToken = ''.obs; // Store user token after registration
   PostRepo postRepo = PostRepo();
   RegisterRepo registerRepo = RegisterRepo();
 
@@ -51,39 +52,54 @@ class InsertController extends GetxController
 
       isLoading.value=true;
       final response = await registerRepo.register(
-      nameController.text,
-      lastNameController.text,
-      emailController.text,
-      passwordController.text,
+        nameController.text,
+        lastNameController.text,
+        emailController.text,
+        passwordController.text,
       );
 
       isLoading.value=false;
 
-      print("====> Response: $response");
-      print("====> Response Type: ${response.runtimeType}");
+      print("====> Registration Response: $response");
       
-      if(response != null)
-        {
-          // Check if response has message
-          if(response ['message'] != null) {
-            Get.snackbar(
-              response['status']?.toString().toUpperCase() ?? "INFO",
-              response['message'].toString(),
-              backgroundColor: response['status']=='success'?  Colors.green : Colors.red,
-              colorText: Colors.white,
-            );
-          }
-          
-          // Navigate to OTP screen if registration is successful
-          // Check multiple possible success indicators
-          if(response['status'] == 'success' || 
-             response['status'] == true || 
-             response['success'] == true) {
-            print("====> Navigating to OTP screen");
-            await Future.delayed(Duration(milliseconds: 500)); // Small delay for snackbar
-            Get.to(() => OtpVerificationScreen(email: emailController.text));
-          }
+      if(response != null && response['status'] == 'success')
+      {
+        // Store token for future use
+        if(response['token'] != null) {
+          userToken.value = response['token'];
+          print("====> Token saved: ${userToken.value.substring(0, 20)}...");
         }
+        
+        // Show success message
+        Get.snackbar(
+          "SUCCESS",
+          response['message'].toString(),
+          backgroundColor: Colors.green,
+          colorText: Colors.white,
+        );
+        
+        // Send OTP automatically
+        print("====> Sending OTP...");
+        await sendOtpToUser();
+        
+        // Navigate to OTP screen
+        print("====> Navigating to OTP screen");
+        await Future.delayed(Duration(milliseconds: 500));
+        Get.to(() => OtpVerificationScreen(
+          email: emailController.text,
+          token: userToken.value,
+        ));
+      }
+      else if(response != null && response['message'] != null)
+      {
+        // Show error message
+        Get.snackbar(
+          "ERROR",
+          response['message'].toString(),
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
+      }
 
     }
     catch (e) {
@@ -93,6 +109,26 @@ class InsertController extends GetxController
       isLoading.value=false;
     }
 
+  }
+
+  // Method to send OTP
+  Future<void> sendOtpToUser() async {
+    try {
+      if(userToken.value.isEmpty) {
+        print("====> No token available");
+        return;
+      }
+      
+      final otpResponse = await registerRepo.sendOtp(userToken.value);
+      
+      if(otpResponse != null) {
+        print("====> OTP sent successfully");
+      } else {
+        print("====> Failed to send OTP");
+      }
+    } catch(e) {
+      print("====> OTP Error: ${e.toString()}");
+    }
   }
 
   Future<void> insertData() async {

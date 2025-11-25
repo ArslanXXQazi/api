@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:api/src/controller/components/black-text.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
   final String email;
+  final String token;
   
   const OtpVerificationScreen({
     super.key,
     required this.email,
+    required this.token,
   });
 
   @override
@@ -16,14 +19,16 @@ class OtpVerificationScreen extends StatefulWidget {
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   final List<TextEditingController> otpControllers = List.generate(
-    6,
+    4,
     (index) => TextEditingController(),
   );
   
   final List<FocusNode> focusNodes = List.generate(
-    6,
+    4,
     (index) => FocusNode(),
   );
+
+  bool isLoading = false;
 
   @override
   void dispose() {
@@ -37,7 +42,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   }
 
   void _onOtpChanged(String value, int index) {
-    if (value.isNotEmpty && index < 5) {
+    if (value.isNotEmpty && index < 3) {
       focusNodes[index + 1].requestFocus();
     }
   }
@@ -121,10 +126,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               // OTP Input Fields
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(6, (index) {
+                children: List.generate(4, (index) {
                   return SizedBox(
-                    width: 50,
-                    height: 60,
+                    width: 65,
+                    height: 70,
                     child: TextField(
                       controller: otpControllers[index],
                       focusNode: focusNodes[index],
@@ -185,12 +190,12 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Add resend OTP logic here
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('OTP resent successfully!'),
-                          backgroundColor: Colors.green,
-                        ),
+                      // TODO: Add resend OTP logic later
+                      Get.snackbar(
+                        "INFO",
+                        'Resend OTP feature - Coming soon!',
+                        backgroundColor: Colors.blue,
+                        colorText: Colors.white,
                       );
                     },
                     child: const Blacktext(
@@ -210,7 +215,26 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 width: double.infinity,
                 height: 56,
                 child: ElevatedButton(
-                 onPressed: (){},
+                  onPressed: () {
+                    String otpCode = getOtpCode();
+                    if (otpCode.length == 4) {
+                      // TODO: Add verify OTP logic later
+                      print('====> OTP Code entered: $otpCode');
+                      Get.snackbar(
+                        "INFO",
+                        'OTP: $otpCode - Verify feature coming soon!',
+                        backgroundColor: Colors.blue,
+                        colorText: Colors.white,
+                      );
+                    } else {
+                      Get.snackbar(
+                        "ERROR",
+                        'Please enter complete 4-digit OTP',
+                        backgroundColor: Colors.red,
+                        colorText: Colors.white,
+                      );
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(

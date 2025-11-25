@@ -1,4 +1,5 @@
 import 'package:api/new%20getx%20api/screens/getx_get_screen.dart';
+import 'package:api/new%20getx%20api/screens/otp_verification_screen.dart';
 import 'package:api/new%20getx%20api/services/repo/post-repo.dart';
 import 'package:api/new%20getx%20api/services/repo/register_repo.dart';
 import 'package:dio/dio.dart';
@@ -56,16 +57,33 @@ class InsertController extends GetxController
       passwordController.text,
       );
 
-      if(response != null && response ['message'] !=null )
-        {
-          Get.snackbar(
-          response['status'].toString().toUpperCase(),
-          response['message'].toString(),
-          backgroundColor: response['status']=='success'?  Colors.green : Colors.red,
-          colorText: Colors.white,
-          );
-        }
       isLoading.value=false;
+
+      print("====> Response: $response");
+      print("====> Response Type: ${response.runtimeType}");
+      
+      if(response != null)
+        {
+          // Check if response has message
+          if(response ['message'] != null) {
+            Get.snackbar(
+              response['status']?.toString().toUpperCase() ?? "INFO",
+              response['message'].toString(),
+              backgroundColor: response['status']=='success'?  Colors.green : Colors.red,
+              colorText: Colors.white,
+            );
+          }
+          
+          // Navigate to OTP screen if registration is successful
+          // Check multiple possible success indicators
+          if(response['status'] == 'success' || 
+             response['status'] == true || 
+             response['success'] == true) {
+            print("====> Navigating to OTP screen");
+            await Future.delayed(Duration(milliseconds: 500)); // Small delay for snackbar
+            Get.to(() => OtpVerificationScreen(email: emailController.text));
+          }
+        }
 
     }
     catch (e) {

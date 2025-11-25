@@ -1,3 +1,4 @@
+import 'package:api/new%20getx%20api/components/common_widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:api/src/controller/components/black-text.dart';
 import 'package:flutter/services.dart';
@@ -18,44 +19,7 @@ class OtpVerificationScreen extends StatefulWidget {
 }
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
-  final List<TextEditingController> otpControllers = List.generate(
-    4,
-    (index) => TextEditingController(),
-  );
-  
-  final List<FocusNode> focusNodes = List.generate(
-    4,
-    (index) => FocusNode(),
-  );
 
-  bool isLoading = false;
-
-  @override
-  void dispose() {
-    for (var controller in otpControllers) {
-      controller.dispose();
-    }
-    for (var node in focusNodes) {
-      node.dispose();
-    }
-    super.dispose();
-  }
-
-  void _onOtpChanged(String value, int index) {
-    if (value.isNotEmpty && index < 3) {
-      focusNodes[index + 1].requestFocus();
-    }
-  }
-
-  void _onBackspace(String value, int index) {
-    if (value.isEmpty && index > 0) {
-      focusNodes[index - 1].requestFocus();
-    }
-  }
-
-  String getOtpCode() {
-    return otpControllers.map((controller) => controller.text).join();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -124,58 +88,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               const SizedBox(height: 40),
 
               // OTP Input Fields
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(4, (index) {
-                  return SizedBox(
-                    width: 65,
-                    height: 70,
-                    child: TextField(
-                      controller: otpControllers[index],
-                      focusNode: focusNodes[index],
-                      textAlign: TextAlign.center,
-                      keyboardType: TextInputType.number,
-                      maxLength: 1,
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      decoration: InputDecoration(
-                        counterText: '',
-                        filled: true,
-                        fillColor: Colors.grey[50],
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.grey[300]!),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: Colors.grey[300]!),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(
-                            color: Colors.blue,
-                            width: 2,
-                          ),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                          vertical: 16,
-                        ),
-                      ),
-                      onChanged: (value) {
-                        _onOtpChanged(value, index);
-                        if (value.isEmpty) {
-                          _onBackspace(value, index);
-                        }
-                      },
-                    ),
-                  );
-                }),
-              ),
+
 
               const SizedBox(height: 30),
 
@@ -215,26 +128,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 width: double.infinity,
                 height: 56,
                 child: ElevatedButton(
-                  onPressed: () {
-                    String otpCode = getOtpCode();
-                    if (otpCode.length == 4) {
-                      // TODO: Add verify OTP logic later
-                      print('====> OTP Code entered: $otpCode');
-                      Get.snackbar(
-                        "INFO",
-                        'OTP: $otpCode - Verify feature coming soon!',
-                        backgroundColor: Colors.blue,
-                        colorText: Colors.white,
-                      );
-                    } else {
-                      Get.snackbar(
-                        "ERROR",
-                        'Please enter complete 4-digit OTP',
-                        backgroundColor: Colors.red,
-                        colorText: Colors.white,
-                      );
-                    }
-                  },
+                  onPressed: (){},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(

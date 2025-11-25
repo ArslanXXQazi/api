@@ -64,12 +64,12 @@ class InsertController extends GetxController
       
       if(response != null && response['status'] == 'success')
       {
-        // Store token for future use
+        //Store token for future use
         if(response['token'] != null) {
           userToken.value = response['token'];
           print("====> Token saved: ${userToken.value.substring(0, 20)}...");
         }
-        
+
         // Show success message
         Get.snackbar(
           "SUCCESS",
@@ -77,14 +77,14 @@ class InsertController extends GetxController
           backgroundColor: Colors.green,
           colorText: Colors.white,
         );
-        
+
         // Send OTP automatically
         print("====> Sending OTP...");
-        await sendOtpToUser();
-        
+        await sendOtp();
+
         // Navigate to OTP screen
         print("====> Navigating to OTP screen");
-        await Future.delayed(Duration(milliseconds: 500));
+        await Future.delayed(Duration(milliseconds: 2000));
         Get.to(() => OtpVerificationScreen(
           email: emailController.text,
           token: userToken.value,
@@ -111,25 +111,55 @@ class InsertController extends GetxController
 
   }
 
-  // Method to send OTP
-  Future<void> sendOtpToUser() async {
-    try {
-      if(userToken.value.isEmpty) {
-        print("====> No token available");
-        return;
-      }
-      
+
+  Future <void> sendOtp () async {
+
+    try{
+
+      if(userToken.value.isEmpty)
+        {
+          print('=====>>> USER TOKEN IS NO AVAILABLE');
+          return;
+        }
+
       final otpResponse = await registerRepo.sendOtp(userToken.value);
-      
-      if(otpResponse != null) {
-        print("====> OTP sent successfully");
-      } else {
-        print("====> Failed to send OTP");
+      if(otpResponse!=null)
+        {
+          print("OTP SEND SUCCESSFULLY");
+          Get.snackbar("Success", "otp send successfully to ${emailController.text}");
+        }
+      else{
+        print('FAILED TO SEND OTP');
       }
-    } catch(e) {
+
+    }
+    catch(e){
       print("====> OTP Error: ${e.toString()}");
     }
+
   }
+
+
+
+  // Method to send OTP
+  // Future<void> sendOtpToUser() async {
+  //   try {
+  //     if(userToken.value.isEmpty) {
+  //       print("====> No token available");
+  //       return;
+  //     }
+  //
+  //     final otpResponse = await registerRepo.sendOtp(userToken.value);
+  //
+  //     if(otpResponse != null) {
+  //       print("====> OTP sent successfully");
+  //     } else {
+  //       print("====> Failed to send OTP");
+  //     }
+  //   } catch(e) {
+  //     print("====> OTP Error: ${e.toString()}");
+  //   }
+  // }
 
   Future<void> insertData() async {
 

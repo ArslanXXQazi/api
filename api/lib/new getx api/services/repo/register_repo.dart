@@ -46,35 +46,69 @@ class RegisterRepo
   }
 
 
-  Future<dynamic> sendOtp(String token) async {
+  Future<dynamic>sendOtp (String token) async {
+
     final String sendUrl = "https://etalk.mtai.live/api/user/send-verification-code";
-    
-    try {
+    try{
       final response = await dio.post(
         sendUrl,
         options: Options(
-          headers: {'Authorization': 'Bearer $token'} // Bearer token format
+        headers: {'Authorization': 'Bearer $token'}
         )
       );
-
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        print("=====>> OTP sent successfully <<=====");
+      if(response.statusCode==200 || response.statusCode==201)
+        {
+          print("======>> OTP SEND SUCCESSFULLY <<=======");
+          print("OTP Response: ${response.data}");
+          return response.data;
+        }
+      else{
+        print("======>> OTP SEND Failed <<=======");
         print("OTP Response: ${response.data}");
         return response.data;
-      } else {
-        print("=====>> OTP send failed <<=====");
-        return response.data;
       }
-    } catch (e) {
-      if (e is DioException) {
-        print("OTP ERROR - STATUS CODE: ${e.response?.statusCode}");
-        print("OTP ERROR - RESPONSE: ${e.response?.data}");
-        return e.response?.data;
-      }
-      print("=====>> OTP Failed: ${e.toString()} <<=====");
+    }
+    catch(e){
+      print("======>> OTP SEND Failed <<=======");
+      print(e.toString());
       return null;
     }
+
+
   }
+
+
+
+
+  // Future<dynamic> sendOtp(String token) async {
+  //   final String sendUrl = "https://etalk.mtai.live/api/user/send-verification-code";
+  //
+  //   try {
+  //     final response = await dio.post(
+  //       sendUrl,
+  //       options: Options(
+  //         headers: {'Authorization': 'Bearer $token'} // Bearer token format
+  //       )
+  //     );
+  //
+  //     if (response.statusCode == 200 || response.statusCode == 201) {
+  //       print("=====>> OTP sent successfully <<=====");
+  //       print("OTP Response: ${response.data}");
+  //       return response.data;
+  //     } else {
+  //       print("=====>> OTP send failed <<=====");
+  //       return response.data;
+  //     }
+  //   } catch (e) {
+  //     if (e is DioException) {
+  //       print("OTP ERROR - STATUS CODE: ${e.response?.statusCode}");
+  //       print("OTP ERROR - RESPONSE: ${e.response?.data}");
+  //       return e.response?.data;
+  //     }
+  //     print("=====>> OTP Failed: ${e.toString()} <<=====");
+  //     return null;
+  //   }
+  // }
 
 
 

@@ -1,8 +1,6 @@
-import 'package:api/new%20getx%20api/screens/getx_get_screen.dart';
 import 'package:api/new%20getx%20api/screens/otp_verification_screen.dart';
 import 'package:api/new%20getx%20api/services/repo/post-repo.dart';
 import 'package:api/new%20getx%20api/services/repo/register_repo.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

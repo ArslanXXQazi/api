@@ -1,3 +1,4 @@
+import 'package:api/new%20getx%20api/components/common_widgets/spinner.dart';
 import 'package:api/new%20getx%20api/controllers/insert_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:api/src/controller/components/black-text.dart';
@@ -157,7 +158,7 @@ class RegisterScreen extends StatelessWidget {
             return insertController.isLoading.value?
             Container(
               color: Colors.black.withOpacity(0.5),
-              child: Center(child: CircularProgressIndicator(color: Colors.blue,),),
+              child: Center(child: Spinner()),
             ) : SizedBox.shrink();
 
           })

@@ -1,3 +1,4 @@
+import 'package:api/new%20getx%20api/screens/home_screen.dart';
 import 'package:api/new%20getx%20api/screens/otp_verification_screen.dart';
 import 'package:api/new%20getx%20api/services/repo/post-repo.dart';
 import 'package:api/new%20getx%20api/services/repo/register_repo.dart';
@@ -18,6 +19,7 @@ class InsertController extends GetxController {
   final TextEditingController confirmPassController = TextEditingController();
 
   var isLoading = false.obs;
+  var sendLoading = false.obs;
   var errorMessage = ''.obs;
   var userToken = ''.obs;
   PostRepo postRepo = PostRepo();
@@ -101,6 +103,8 @@ class InsertController extends GetxController {
   //send otp function
   Future<void> sendOtp() async {
     try {
+
+      sendLoading.value=true;
       if (userToken.value.isEmpty) {
         print('=====>>> USER TOKEN IS NO AVAILABLE');
         return;
@@ -111,11 +115,13 @@ class InsertController extends GetxController {
         print("OTP SEND SUCCESSFULLY");
         Get.snackbar(
             "Success", "otp send successfully to ${emailController.text}");
+        sendLoading.value=false;
       } else {
         print('FAILED TO SEND OTP');
       }
     } catch (e) {
       print("====> OTP Error: ${e.toString()}");
+      sendLoading.value=false;
     }
   }
 
@@ -134,8 +140,20 @@ class InsertController extends GetxController {
         return;
       }
 
-      int otp = int.parse(otpCode) ?? 0;
-      if (otp == 0) {
+      // Check if OTP contains only digits (0-9)
+      if (!RegExp(r'^\d{4}$').hasMatch(otpCode)) {
+        Get.snackbar(
+          "ERROR",
+          "Invalid OTP format",
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
+        return;
+      }
+
+      int otp = int.tryParse(otpCode) ?? 0;
+      // Allow "0000" as valid OTP, but reject invalid formats
+      if (otp == 0 && otpCode != "0000") {
         Get.snackbar(
           "ERROR",
           "Invalid OTP format",
@@ -159,6 +177,7 @@ class InsertController extends GetxController {
             backgroundColor: Colors.green,
             colorText: Colors.white,
           );
+          Get.to(HomeScreen());
         } else {
           Get.snackbar(
             response['status'].toString().toUpperCase(),

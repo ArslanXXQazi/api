@@ -106,33 +106,36 @@ class OtpVerificationScreen extends StatelessWidget {
               const SizedBox(height: 30),
 
               // Resend Code
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Blacktext(
-                    text: "Didn't receive the code? ",
-                    fontSize: 14,
-                    color: Colors.grey,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      // TODO: Add resend OTP logic later
-                      Get.snackbar(
-                        "INFO",
-                        'Resend OTP feature - Coming soon!',
-                        backgroundColor: Colors.blue,
-                        colorText: Colors.white,
-                      );
-                    },
-                    child: const Blacktext(
-                      text: 'Resend',
+              Obx((){
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Blacktext(
+                      text: "Didn't receive the code? ",
                       fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
+                      color: Colors.grey,
                     ),
-                  ),
-                ],
-              ),
+                    GestureDetector(
+                      onTap: () {
+                        insertController.sendOtp();
+                      },
+                      child: insertController.sendLoading.value?
+                      const Blacktext(
+                        text: 'Resending...',
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ):
+                      const Blacktext(
+                        text: 'Resend',
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                );
+              }),
 
               const SizedBox(height: 40),
 

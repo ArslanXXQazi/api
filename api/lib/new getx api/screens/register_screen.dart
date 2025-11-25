@@ -93,8 +93,7 @@ class RegisterScreen extends StatelessWidget {
                   CustomTextField(
                     controller: insertController.passwordController,
                     hintText: 'Enter your password',
-                    obscureText: true,
-                    suffixIcon: const Icon(Icons.visibility_off, color: Colors.grey),
+                    obscureText: false,
                   ),
 
                   const SizedBox(height: 10),
@@ -109,8 +108,7 @@ class RegisterScreen extends StatelessWidget {
                   CustomTextField(
                     controller: insertController.confirmPassController,
                     hintText: 'Re-enter your password',
-                    obscureText: true,
-                    suffixIcon: const Icon(Icons.visibility_off, color: Colors.grey),
+                    obscureText: false,
                   ),
 
                   const SizedBox(height: 15),

@@ -16,7 +16,7 @@ class LoginRepo{
         "fcm_token":"abcd"
       };
 
-      final response = await dio.request(loginUrl, data: data);
+      final response = await dio.post(loginUrl, data: data);
       if(response.statusCode==200||response.statusCode==201)
         {
           print("=========>> LOGIN SUCCESSFULLY");

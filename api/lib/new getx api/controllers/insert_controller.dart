@@ -30,18 +30,16 @@ class InsertController extends GetxController {
 
 
   //user login function
-  Future<void> userLogin(String email , String password) async {
+  Future<void> userLogin() async {
 
     try{
-      isLoading.value=true;
       if(emailController.text.isEmpty || passwordController.text.isEmpty){
         Get.snackbar("Error", "Please fill all fields first");
         return;
       }
-
-      final response = await loginRepo.loginRepo(email, password);
-
-      if( response !=null || response['status'] == 'success' )
+      isLoading.value=true;
+      final response = await loginRepo.loginRepo(emailController.text, passwordController.text);
+      if( response !=null && response['status'] == 'success' )
         {
           Get.snackbar("${response['status'].toString().toUpperCase()}", "${response['message']}");
           String token = response['token'];
@@ -58,7 +56,6 @@ class InsertController extends GetxController {
 
     }
     catch(e){
-
       isLoading.value=false;
       print("=============>>> ERROR ${e.toString()}");
     }

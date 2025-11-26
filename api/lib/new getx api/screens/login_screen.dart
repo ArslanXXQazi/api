@@ -32,7 +32,9 @@ class LoginScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
+
                   const SizedBox(height: 8),
+
                   const Blacktext(
                     text: 'Sign in to continue',
                     fontSize: 16,
@@ -48,7 +50,9 @@ class LoginScreen extends StatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                   ),
+
                   const SizedBox(height: 8),
+
                   CustomTextField(
                     controller: insertController.emailController,
                     hintText: 'Enter your email',
@@ -64,6 +68,7 @@ class LoginScreen extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                   const SizedBox(height: 8),
+
                   CustomTextField(
                     controller: insertController.passwordController,
                     hintText: 'Enter your password',
@@ -78,8 +83,7 @@ class LoginScreen extends StatelessWidget {
                     height: 56,
                     child: ElevatedButton(
                       onPressed: () {
-                        // TODO: Add login logic here
-                        // insertController.loginUser();
+                        insertController.userLogin();
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,

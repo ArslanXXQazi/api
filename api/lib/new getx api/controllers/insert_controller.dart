@@ -1,5 +1,6 @@
 import 'package:api/new%20getx%20api/screens/home_screen.dart';
 import 'package:api/new%20getx%20api/screens/otp_verification_screen.dart';
+import 'package:api/new%20getx%20api/services/repo/login_repo.dart';
 import 'package:api/new%20getx%20api/services/repo/post-repo.dart';
 import 'package:api/new%20getx%20api/services/repo/register_repo.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,18 +25,26 @@ class InsertController extends GetxController {
   var userToken = ''.obs;
   PostRepo postRepo = PostRepo();
   RegisterRepo registerRepo = RegisterRepo();
+  LoginRepo loginRepo = LoginRepo();
 
 
   //user login function
   Future<void> userLogin(String email , String password) async {
 
     try{
-      
       isLoading.value=true;
       if(emailController.text.isEmpty || passwordController.text.isEmpty){
         Get.snackbar("Error", "Please fill all fields first");
         return;
       }
+
+      final response = await loginRepo.loginRepo(email, password);
+
+      if(response['status'] == 'success')
+        {
+
+        }
+
 
     }
     catch(e){

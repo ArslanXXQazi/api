@@ -1,5 +1,6 @@
 import 'package:api/new%20getx%20api/screens/home_screen.dart';
 import 'package:api/new%20getx%20api/screens/otp_verification_screen.dart';
+import 'package:api/new%20getx%20api/services/get-storage/get_storage.dart';
 import 'package:api/new%20getx%20api/services/repo/login_repo.dart';
 import 'package:api/new%20getx%20api/services/repo/post-repo.dart';
 import 'package:api/new%20getx%20api/services/repo/register_repo.dart';
@@ -40,15 +41,26 @@ class InsertController extends GetxController {
 
       final response = await loginRepo.loginRepo(email, password);
 
-      if(response['status'] == 'success')
+      if( response !=null || response['status'] == 'success' )
         {
-
+          Get.snackbar("${response['status'].toString().toUpperCase()}", "${response['message']}");
+          String token = response['token'];
+          GetStorageService.saveToken(token);
+          Get.to(HomeScreen());
+          isLoading.value=false;
+        }
+      else
+        {
+          isLoading.value=false;
+          Get.snackbar("${response['status'].toString().toUpperCase()}", "${response['message']}");
         }
 
 
     }
     catch(e){
 
+      isLoading.value=false;
+      print("=============>>> ERROR ${e.toString()}");
     }
 
 

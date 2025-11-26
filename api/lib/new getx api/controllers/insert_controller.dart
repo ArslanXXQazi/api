@@ -26,6 +26,26 @@ class InsertController extends GetxController {
   RegisterRepo registerRepo = RegisterRepo();
 
 
+  //user login function
+  Future<void> userLogin(String email , String password) async {
+
+    try{
+      
+      isLoading.value=true;
+      if(emailController.text.isEmpty || passwordController.text.isEmpty){
+        Get.snackbar("Error", "Please fill all fields first");
+        return;
+      }
+
+    }
+    catch(e){
+
+    }
+
+
+  }
+
+
   //user register function
   Future<void> registerUser() async {
     try {

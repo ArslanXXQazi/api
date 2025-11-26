@@ -7,6 +7,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Center(child: Blacktext(text: "Welcome Back",fontWeight: FontWeight.bold,fontSize: 45,color: Colors.green,),),
     );
   }

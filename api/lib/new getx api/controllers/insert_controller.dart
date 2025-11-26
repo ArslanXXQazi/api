@@ -41,7 +41,7 @@ class InsertController extends GetxController {
       final response = await loginRepo.loginRepo(emailController.text, passwordController.text);
       if( response !=null && response['status'] == 'success' )
         {
-          Get.snackbar("${response['status'].toString().toUpperCase()}", "${response['message']}");
+          Get.snackbar("${response['status'].toString().toUpperCase()}", "${response['message']}",backgroundColor: Colors.green,colorText: Colors.white);
           String token = response['token'];
           GetStorageService.saveToken(token);
           Get.to(HomeScreen());
@@ -50,7 +50,7 @@ class InsertController extends GetxController {
       else
         {
           isLoading.value=false;
-          Get.snackbar("${response['status'].toString().toUpperCase()}", "${response['message']}");
+          Get.snackbar("${response['status'].toString().toUpperCase()}", "${response['message']}",backgroundColor: Colors.red,colorText: Colors.white);
         }
 
 

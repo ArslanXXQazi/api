@@ -1,4 +1,5 @@
 import 'package:api/new%20getx%20api/screens/getx_get_screen.dart';
+import 'package:api/new%20getx%20api/screens/login_screen.dart';
 import 'package:api/new%20getx%20api/screens/post_screen.dart';
 import 'package:api/new%20getx%20api/screens/register_screen.dart';
 import 'package:api/src/get/all_users.dart';
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'APIS',
-      home: RegisterScreen(),
+      home: LoginScreen(),
+      //RegisterScreen(),
       //PostScreen(),
       //GetxGetScreen()
       //PostInsertData(),

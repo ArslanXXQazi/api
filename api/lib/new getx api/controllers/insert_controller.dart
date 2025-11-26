@@ -25,6 +25,8 @@ class InsertController extends GetxController {
   PostRepo postRepo = PostRepo();
   RegisterRepo registerRepo = RegisterRepo();
 
+
+  //user register function
   Future<void> registerUser() async {
     try {
       if (nameController.text.isEmpty ||
@@ -126,7 +128,6 @@ class InsertController extends GetxController {
   }
 
   //verification otp function
-
   Future<void> verifyOtp(String email, String otpCode) async {
     try {
       isLoading.value = true;

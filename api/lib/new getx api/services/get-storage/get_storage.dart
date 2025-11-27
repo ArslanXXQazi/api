@@ -5,7 +5,7 @@ class GetStorageService {
   static final box = GetStorage();
 
 
-  /// token save method
+  /// ===============>>> token save method
 
   static  saveToken (String token)
   {
@@ -23,7 +23,7 @@ class GetStorageService {
   }
 
 
-  // User_Id save method
+  // ==========>> User_Id save method
 
   static saveUserId (String userId)
   {

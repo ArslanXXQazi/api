@@ -45,6 +45,7 @@ class InsertController extends GetxController {
           String token = response['token'];
           String userId = response['user']['id'];
           GetStorageService.saveToken(token);
+          GetStorageService.saveUserId(userId);
           Get.to(HomeScreen());
           isLoading.value=false;
         }

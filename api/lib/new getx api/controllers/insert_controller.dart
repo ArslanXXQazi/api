@@ -1,3 +1,4 @@
+import 'package:api/new%20getx%20api/screens/bottom_nav_screen.dart';
 import 'package:api/new%20getx%20api/screens/home_screen.dart';
 import 'package:api/new%20getx%20api/screens/otp_verification_screen.dart';
 import 'package:api/new%20getx%20api/services/get-storage/get_storage.dart';
@@ -46,7 +47,7 @@ class InsertController extends GetxController {
           String userId = response['user']['id'].toString();
           GetStorageService.saveToken(token);
           GetStorageService.saveUserId(userId);
-          Get.to(HomeScreen());
+          Get.to(BottomNavScreen());
           print("Navigated");
           isLoading.value=false;
         }

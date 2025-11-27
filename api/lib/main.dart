@@ -1,3 +1,4 @@
+import 'package:api/new%20getx%20api/screens/bottom_nav_screen.dart';
 import 'package:api/new%20getx%20api/screens/getx_get_screen.dart';
 import 'package:api/new%20getx%20api/screens/login_screen.dart';
 import 'package:api/new%20getx%20api/screens/post_screen.dart';
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'APIS',
-      home: LoginScreen(),
+      home: BottomNavScreen(),
+      //LoginScreen(),
       //RegisterScreen(),
       //PostScreen(),
       //GetxGetScreen()

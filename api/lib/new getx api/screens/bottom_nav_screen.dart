@@ -11,8 +11,6 @@ class BottomNavScreen extends StatefulWidget {
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
 
-  int currentIndex = 0;
-
   List<Widget> screens = [
     HomeScreen(),
     Center(child: Text("Search Screen", style: TextStyle(fontSize: 25))),
@@ -22,37 +20,41 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    BottomNavController controller = Get.put(BottomNavController());
+
     return Scaffold(
-      body: screens[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (index){
-          setState(() {
-            currentIndex=index;
-          });
-        },
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: "Search",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: "Notify",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
-          ),
-        ],
-      ),
+      body: Obx(()=> screens[controller.currentIndex.value]),
+      bottomNavigationBar: Obx((){
+
+       return BottomNavigationBar(
+          currentIndex: controller.currentIndex.value,
+          onTap: (index)=>controller.changeIndex(index),
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.grey,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: "Search",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.notifications),
+              label: "Notify",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: "Profile",
+            ),
+          ],
+        );
+
+
+      })
     );
   }
 }

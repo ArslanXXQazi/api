@@ -43,6 +43,7 @@ class InsertController extends GetxController {
         {
           Get.snackbar("${response['status'].toString().toUpperCase()}", "${response['message']}",backgroundColor: Colors.green,colorText: Colors.white);
           String token = response['token'];
+          String userId = response['user']['id'];
           GetStorageService.saveToken(token);
           Get.to(HomeScreen());
           isLoading.value=false;

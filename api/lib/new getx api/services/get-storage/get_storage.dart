@@ -4,6 +4,9 @@ class GetStorageService {
 
   static final box = GetStorage();
 
+
+  /// token save method
+
   static  saveToken (String token)
   {
     box.write("token",token);
@@ -19,5 +22,22 @@ class GetStorageService {
     box.remove("token");
   }
 
+
+  // User_Id save method
+
+  static saveUserId (String userId)
+  {
+    box.write("userId", userId);
+  }
+
+  static getUserId ()
+  {
+    box.read("userId");
+  }
+
+  static deleteUserId ()
+  {
+    box.read("userId");
+  }
 
 }

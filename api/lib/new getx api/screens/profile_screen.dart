@@ -321,27 +321,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     SizedBox(height: 16),
 
-                    ModernCard(
-                      icon: Icons.star_outline,
-                      iconColor: Color(0xFFFFB800),
-                      title: 'Interests & Skills',
-                      child: data['profile']['interests']==null || (data['profile']['interests'] as List).isEmpty?
-                      Center(
-                        child: Padding(
-                          padding: EdgeInsets.all(16),
-                          child: Text("No interests added yet", style: TextStyle(color: Colors.grey)),
-                        ),
-                      )
-                          :Wrap(
-                        spacing: 10,
-                        runSpacing: 10,
-                        children: [
-                          (data['profile']['interests'] as List).
-                      map((interest))
-                        ],
-                      )
-                      ,
+                ModernCard(
+                  icon: Icons.star_outline,
+                  iconColor: Color(0xFFFFB800),
+                  title: 'Interests & Skills',
+                  child: data['profile']['interests'] == null ||
+                      (data['profile']['interests'] as List).isEmpty
+                      ? Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Text("No interests added yet", style: TextStyle(color: Colors.grey)),
                     ),
+                  )
+                      : Wrap(
+                    spacing: 10,
+                    runSpacing: 10,
+                    children: (data['profile']['interests'] as List)
+                        .map((interest) => InterestChip(text: interest.toString()))
+                        .toList(),
+                  ),
+                ),
 
                     SizedBox(height: 16),
 

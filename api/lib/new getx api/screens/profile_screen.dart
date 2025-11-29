@@ -35,7 +35,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   }
   Widget build(BuildContext context) {
-
+    final data = profileController.profileData.value!;
     return Scaffold(
       backgroundColor: Color(0xFFF5F7FA),
       body: Stack(
@@ -63,6 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ],
                           ),
                         ),
+
                       ),
                       // Decorative circles
                       Positioned(
@@ -120,12 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
                                     child: CircleAvatar(
                                       radius: 48,
-                                      backgroundColor: Color(0xFFE8EEFF),
-                                      child: Icon(
-                                        Icons.person,
-                                        size: 50,
-                                        color: Color(0xFF667eea),
-                                      ),
+                                      backgroundColor: Colors.white,
                                     ),
                                   ),
                                   Positioned(
@@ -157,7 +153,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             SizedBox(height: 12),
                             // Name
                             Blacktext(
-                              text: profileController.profileData['profile']['nickname']??"N|A",
+                              text: data['profile']['nickname']??"N|A",
                               fontSize: 26,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,

@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'APIS',
       home:
-          //BottomNavScreen(),
-          LoginScreen(),
+          BottomNavScreen(),
+         // LoginScreen(),
       //RegisterScreen(),
       //PostScreen(),
       //GetxGetScreen()

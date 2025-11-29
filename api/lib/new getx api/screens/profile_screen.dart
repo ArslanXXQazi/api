@@ -30,7 +30,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final userid = GetStorageService.getUserId().toString();
 
     if (token != null) {
-      profileController.fetchProfileData(userid, token);
+      profileController.fetchProfileData("93", token);
     } else {
       print("TOKEN NOT FOUND");
     }
@@ -300,17 +300,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       title: 'Languages',
                       child: Column(
                         children: [
+                          // Speaking Languages
                           LanguageItem(
                             label: 'Speaking',
-                            languages: ['Spanish'],
+                            languages: List<String>.from(data['profile']['spoken_languages'] ?? []),
                             color: Color(0xFF667eea),
                           ),
                           SizedBox(height: 12),
                           Divider(height: 1),
                           SizedBox(height: 12),
+                          // Learning Languages
                           LanguageItem(
                             label: 'Learning',
-                            languages: ['Spanish'],
+                            languages: List<String>.from(data['profile']['learning_languages'] ?? []),
                             color: Color(0xFFf093fb),
                           ),
                         ],
@@ -323,17 +325,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       icon: Icons.star_outline,
                       iconColor: Color(0xFFFFB800),
                       title: 'Interests & Skills',
-                      child: Wrap(
+                      child: data['profile']['interests']==null || (data['profile']['interests'] as List).isEmpty?
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(16),
+                          child: Text("No interests added yet", style: TextStyle(color: Colors.grey)),
+                        ),
+                      )
+                          :Wrap(
                         spacing: 10,
                         runSpacing: 10,
                         children: [
-                          'Beginner',
-                          'Fluent',
-                          'Writing',
-                          'Reading',
-                          'Speaking'
-                        ].map((i) => InterestChip(text: i)).toList(),
-                      ),
+                          (data['profile']['interests'] as List).
+                      map((interest))
+                        ],
+                      )
+                      ,
                     ),
 
                     SizedBox(height: 16),

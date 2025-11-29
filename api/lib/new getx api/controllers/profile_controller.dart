@@ -20,7 +20,7 @@ class ProfileController extends GetxController
 
       final response = await profileRepo.profileRepo(userId, token);
 
-      if(response !=null && response['']=='success')
+      if(response !=null && response['status']=='success')
       {
         profileData.value= response['data'];
         print("Profile Loaded Successfully");

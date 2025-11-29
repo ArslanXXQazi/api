@@ -1,5 +1,6 @@
 import 'package:api/new%20getx%20api/components/common_widgets/spinner.dart';
 import 'package:api/new%20getx%20api/controllers/profile_controller.dart';
+import 'package:api/new%20getx%20api/services/get-storage/get_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -12,12 +13,29 @@ import '../components/common_widgets/language_item.dart';
 import '../components/common_widgets/interest_chip.dart';
 import '../components/common_widgets/purchase_card.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  ProfileController profileController = Get.put(ProfileController());
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    profileController.fetchProfileData(93.toString(),
+        GetStorageService.getToken()!);
+
+    print("====>>>> ${GetStorageService.getToken().toString()}");
+    print("====>>>> ${GetStorageService.getUserId().toString()}");
+
+  }
   Widget build(BuildContext context) {
-    ProfileController profileController = Get.put(ProfileController());
+
     return Scaffold(
       backgroundColor: Color(0xFFF5F7FA),
       body: Stack(
@@ -139,7 +157,7 @@ class ProfileScreen extends StatelessWidget {
                             SizedBox(height: 12),
                             // Name
                             Blacktext(
-                              text: 'User Name',
+                              text: profileController.profileData['profile']['nickname']??"N|A",
                               fontSize: 26,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,

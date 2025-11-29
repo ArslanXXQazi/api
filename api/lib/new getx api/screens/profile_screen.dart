@@ -27,9 +27,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
 
     final token = GetStorageService.getToken();
+    final userid = GetStorageService.getUserId().toString();
 
     if (token != null) {
-      profileController.fetchProfileData("93", token);
+      profileController.fetchProfileData(userid, token);
     } else {
       print("TOKEN NOT FOUND");
     }
@@ -118,19 +119,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             child: Stack(
                               children: [
-                                Container(
-                                  padding: EdgeInsets.all(4),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    gradient: LinearGradient(
-                                      colors: [Colors.white, Colors.white70],
-                                    ),
-                                  ),
-                                  child:  CircleAvatar(
+                                CircleAvatar(
+                                  radius: 50,
+                                  backgroundColor: Colors.white,
+                                  child: data['profile_image_url'] != null
+                                      ? CircleAvatar(
                                     radius: 50,
-                                    backgroundColor: Colors.white,
-                                    child: Icon(Icons.person,size: 50,),
+                                    backgroundImage: NetworkImage(
+                                        data['profile_image_url']),
                                   )
+                                      : CircleAvatar(
+                                    radius: 50,
+                                    child: Icon(Icons.person, size: 50),
+                                  ),
                                 ),
 
                                 // CAMERA ICON
@@ -147,8 +148,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         ],
                                       ),
                                       shape: BoxShape.circle,
-                                      border:
-                                      Border.all(color: Colors.white, width: 3),
+                                      border: Border.all(
+                                          color: Colors.white, width: 3),
                                     ),
                                     child: Icon(
                                       Icons.camera_alt,
@@ -176,14 +177,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              // 🔥 FIX #1
                               ProfileHeaderBadge(
-                                  icon: Icons.male, text: data['profile']['gender']),
+                                icon: Icons.male,
+                                text: data['profile']?['gender']?.toString() ??
+                                    "N/A",
+                              ),
+
                               SizedBox(width: 8),
+
+                              // 🔥 FIX #2
                               ProfileHeaderBadge(
-                                  icon: Icons.cake, text: data['profile']['age'].toString()),
+                                icon: Icons.cake,
+                                text: data['profile']?['age']?.toString() ??
+                                    "N/A",
+                              ),
+
                               SizedBox(width: 8),
+
+                              // 🔥 FIX #3
                               ProfileHeaderBadge(
-                                  icon: Icons.location_on, text: data['profile']['location'],),
+                                icon: Icons.location_on,
+                                text:
+                                data['profile']?['location'] ?? "N/A",
+                              ),
                             ],
                           ),
                         ],
@@ -224,7 +241,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           StatCard(
-                            count: data['profile']['followers'].toString(),
+                            count: data['followers'].toString(),
                             label: 'Followers',
                             color: Color(0xFF667eea),
                           ),
@@ -233,7 +250,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               height: 50,
                               color: Colors.grey[200]),
                           StatCard(
-                            count: '0',
+                            count: data['following'].toString(),
                             label: 'Following',
                             color: Color(0xFF764ba2),
                           ),
@@ -242,7 +259,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               height: 50,
                               color: Colors.grey[200]),
                           StatCard(
-                            count: '0',
+                            count: data['visitors'].toString(),
                             label: 'Visitors',
                             color: Color(0xFFf093fb),
                           ),
@@ -269,7 +286,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       iconColor: Color(0xFF667eea),
                       title: 'About Me',
                       child: Blacktext(
-                        text: 'update bio',
+                        text: data['profile']['bio']??"N/A",
                         fontSize: 14,
                         color: Colors.grey[600],
                       ),
